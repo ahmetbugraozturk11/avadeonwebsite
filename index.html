@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AVADEON YAZILIM</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050508;
-            --card-bg: #0d0e15;
+            --bg-color: #030305;
+            --card-bg: rgba(13, 14, 21, 0.75);
             --border-color: #1a1c2e;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
             
             /* Lüks Renk Dokunuşları (Gradient & Accents) */
-            --accent-glow: rgba(0, 242, 254, 0.15);
+            --accent-glow: rgba(0, 242, 254, 0.2);
             --accent-border: #00f2fe;
             --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+            --purple-glow: rgba(122, 60, 255, 0.15);
         }
 
         * {
@@ -31,6 +32,59 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
+            position: relative;
+        }
+
+        /* 1. EN DİŞ KENAR ANİMASYONLU ÇERÇEVE (Outer Border Glow) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-image: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(122, 60, 255, 0.1), rgba(0, 242, 254, 0.2)) 1;
+            pointer-events: none;
+            z-index: 999;
+            animation: borderPulse 6s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.8; }
+        }
+
+        /* 2. ARKA PLAN ORTAM IŞIKLARI (Ambient Glow Orbs) */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            animation: floatGlow 10s ease-in-out infinite alternate;
+        }
+
+        .glow-orb-1 {
+            top: -100px;
+            left: -100px;
+            width: 450px;
+            height: 450px;
+            background: rgba(0, 242, 254, 0.12);
+        }
+
+        .glow-orb-2 {
+            bottom: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: rgba(122, 60, 255, 0.12);
+            animation-delay: -5s;
+        }
+
+        @keyframes floatGlow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(40px, 50px) scale(1.15); }
         }
 
         /* Hero Section & Entry Animation */
@@ -39,9 +93,9 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--bg-color);
+            background-color: transparent;
             position: relative;
-            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.05) 0%, transparent 70%);
+            z-index: 1;
         }
 
         .hero-title {
@@ -56,7 +110,7 @@
             transform: translateY(-50px);
             animation: dropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
-            filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.2));
+            filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.3));
         }
 
         @keyframes dropDown {
@@ -80,6 +134,8 @@
             align-items: center;
             border-top: 1px solid var(--border-color);
             position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
         }
 
         .section-title {
@@ -96,12 +152,12 @@
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
+            width: 70px;
             height: 3px;
             background: var(--gradient-accent);
             margin: 15px auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
         }
 
         /* 1. Biz Kimiz Section */
@@ -117,6 +173,12 @@
             border-radius: 12px;
             border: 1px solid var(--border-color);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+        }
+
+        .about-content:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            box-shadow: 0 10px 35px var(--accent-glow);
         }
 
         /* 2. Misyon, Vizyon, Projeler Section */
@@ -151,9 +213,9 @@
         }
 
         .card:hover {
-            border-color: rgba(0, 242, 254, 0.3);
+            border-color: rgba(0, 242, 254, 0.4);
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px var(--accent-glow);
+            box-shadow: 0 12px 35px var(--accent-glow);
         }
 
         .card:hover::before {
@@ -200,9 +262,9 @@
         }
 
         .team-card:hover {
-            border-color: rgba(0, 242, 254, 0.3);
+            border-color: rgba(0, 242, 254, 0.4);
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.15);
         }
 
         .avatar {
@@ -290,7 +352,7 @@
             justify-content: center;
             color: #00f2fe;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
         }
 
         .leader-card h3 {
@@ -332,6 +394,10 @@
     </style>
 </head>
 <body>
+
+    <!-- ARKA PLAN SÜZÜLEN IŞIK HÜZMELERİ -->
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
 
     <!-- 1. GİRİŞ ANİMASYONU -->
     <section class="hero">
