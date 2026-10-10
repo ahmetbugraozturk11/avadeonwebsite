@@ -7,11 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505;
-            --card-bg: #0a0a0a;
-            --border-color: #1a1a1a;
+            --bg-color: #050508;
+            --card-bg: #0d0e15;
+            --border-color: #1a1c2e;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
+            
+            /* Lüks Renk Dokunuşları (Gradient & Accents) */
+            --accent-glow: rgba(0, 242, 254, 0.15);
+            --accent-border: #00f2fe;
+            --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
         }
 
         * {
@@ -36,18 +41,22 @@
             align-items: center;
             background-color: var(--bg-color);
             position: relative;
+            background: radial-gradient(circle at center, rgba(0, 242, 254, 0.05) 0%, transparent 70%);
         }
 
         .hero-title {
             font-size: 4rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 12px;
             text-transform: uppercase;
-            color: #ffffff;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             opacity: 0;
             transform: translateY(-50px);
             animation: dropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
+            filter: drop-shadow(0 0 20px rgba(0, 242, 254, 0.2));
         }
 
         @keyframes dropDown {
@@ -70,16 +79,29 @@
             justify-content: center;
             align-items: center;
             border-top: 1px solid var(--border-color);
+            position: relative;
         }
 
         .section-title {
             font-size: 2.5rem;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 4px;
             margin-bottom: 40px;
             text-transform: uppercase;
             color: #fff;
             text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
         }
 
         /* 1. Biz Kimiz Section */
@@ -90,6 +112,11 @@
             line-height: 1.8;
             color: var(--text-secondary);
             font-weight: 300;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
         /* 2. Misyon, Vizyon, Projeler Section */
@@ -105,12 +132,32 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 40px 30px;
-            border-radius: 6px;
-            transition: border-color 0.3s ease;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .card:hover {
-            border-color: #444;
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .card:hover::before {
+            opacity: 1;
         }
 
         .card h3 {
@@ -119,6 +166,9 @@
             margin-bottom: 15px;
             text-transform: uppercase;
             color: #fff;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .card p {
@@ -142,23 +192,30 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 6px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.1);
         }
 
         .avatar {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background-color: #151515;
-            border: 1px solid #333;
+            background-color: #151725;
+            border: 2px solid rgba(0, 242, 254, 0.3);
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #555;
+            color: #00f2fe;
             font-size: 0.8rem;
             object-fit: cover;
         }
@@ -171,10 +228,16 @@
         }
 
         .team-info span {
-            display: block;
-            font-size: 0.8rem;
-            color: var(--text-secondary);
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
             margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .team-info p {
@@ -198,39 +261,52 @@
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             padding: 40px 30px;
-            border-radius: 8px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             flex: 1;
             min-width: 300px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .leader-card:hover {
+            border-color: rgba(0, 242, 254, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px var(--accent-glow);
         }
 
         .leader-avatar {
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            background-color: #151515;
-            border: 1px solid #333;
+            background-color: #151725;
+            border: 2px solid #00f2fe;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #555;
+            color: #00f2fe;
             object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.2);
         }
 
         .leader-card h3 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             color: #fff;
             letter-spacing: 2px;
             margin-bottom: 5px;
         }
 
         .leader-card .title {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #00f2fe;
+            background: rgba(0, 242, 254, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
