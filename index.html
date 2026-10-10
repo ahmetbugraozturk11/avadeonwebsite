@@ -49,7 +49,7 @@
         }
 
         /* ------------------------------------
-           1. HERO SECTION (ESKİ CANLI VE DERİN YEŞİL EFEKT)
+            1. HERO SECTION (ESKİ CANLI VE DERİN YEŞİL EFEKT)
         ------------------------------------ */
         .hero {
             height: 100vh;
@@ -81,13 +81,17 @@
             100% { transform: scale(1.2) translate(20px, 20px); opacity: 0.9; }
         }
 
-        .hero-crown {
-            width: 58px;
-            height: 58px;
+        /* YUVARLAK LOGO STİLİ */
+        .hero-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--rolex-gold);
             margin-bottom: 25px;
             opacity: 0;
             animation: dropDownCrown 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards, pulseCrown 4s ease-in-out infinite alternate 2.5s;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.7));
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
         }
 
         .hero-title {
@@ -128,8 +132,8 @@
         }
 
         @keyframes pulseCrown {
-            0% { filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)); transform: scale(1); }
-            100% { filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.9)); transform: scale(1.06); }
+            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); transform: scale(1); }
+            100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.9); transform: scale(1.06); }
         }
 
         @keyframes shineTitle {
@@ -138,7 +142,7 @@
         }
 
         /* ------------------------------------
-           2. BEYAZ LÜKS İÇERİK BÖLÜMLERİ
+            2. BEYAZ LÜKS İÇERİK BÖLÜMLERİ
         ------------------------------------ */
         .white-wrapper {
             background-color: var(--bg-white);
@@ -460,7 +464,7 @@
         }
 
         /* ------------------------------------
-           3. FOOTER (ALT BİLGİ & İLETİŞİM)
+            3. FOOTER (ALT BİLGİ & İLETİŞİM)
         ------------------------------------ */
         .footer {
             background-color: var(--rolex-black);
@@ -511,7 +515,7 @@
         }
 
         /* ------------------------------------
-           4. DİNAMİK SAĞDAN / SOLDAN / AŞAĞIDAN GELİŞ ANİMASYONLARI
+            4. DİNAMİK SAĞDAN / SOLDAN / AŞAĞIDAN GELİŞ ANİMASYONLARI
         ------------------------------------ */
         .reveal-up {
             opacity: 0;
@@ -578,11 +582,9 @@
     <section class="hero">
         <div class="glow-orb-hero"></div>
         
-        <!-- ROLEX CROWN SVG EMBEDDED -->
-        <svg class="hero-crown" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5Z" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M5 19H19" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
+        <!-- YUVARLAK LOGO -->
+        <img src="yenilogo.png" alt="Avadeon Yazılım Logo" class="hero-logo">
+        
         <h1 class="hero-title">Avadeon Yazılım</h1>
         <p class="hero-subtitle">Genç &amp; Dinamik</p>
     </section>
