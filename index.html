@@ -7,21 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #040406;
-            --card-bg: rgba(18, 20, 32, 0.7);
-            --border-color: rgba(255, 255, 255, 0.1);
+            --bg-color: #08090c;
+            --card-bg: rgba(18, 20, 26, 0.8);
+            --border-color: rgba(255, 255, 255, 0.08);
             --text-primary: #ffffff;
             --text-secondary: #94a3b8;
             
-            /* Çoklu Canlı Renk Paleti (Mavi, Mor, Teal, Magenta) */
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-teal: #10b981;
-            --accent-pink: #ec4899;
-            
-            --main-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%);
-            --card-hover-border: rgba(139, 92, 246, 0.5);
-            --accent-glow: rgba(139, 92, 246, 0.2);
+            /* Temiz, Elit ve Sadelik Odaklı Vurgu Tonları */
+            --accent-light: #e2e8f0;
+            --accent-ice: #38bdf8;
+            --card-hover-border: rgba(226, 232, 240, 0.3);
+            --subtle-shadow: rgba(0, 0, 0, 0.6);
         }
 
         * {
@@ -39,53 +35,6 @@
             position: relative;
         }
 
-        /* ARKA PLAN ORTAM IŞIKLARI (Çizgisiz, Yumuşak Mavi & Mor Glow) */
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(150px);
-            pointer-events: none;
-            z-index: 0;
-            animation: floatGlow 14s ease-in-out infinite alternate;
-        }
-
-        .glow-orb-1 {
-            top: -100px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        .glow-orb-2 {
-            bottom: -100px;
-            right: -100px;
-            width: 550px;
-            height: 550px;
-            background: rgba(139, 92, 246, 0.1);
-            animation-delay: -7s;
-        }
-
-        .glow-orb-3 {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: rgba(236, 72, 153, 0.06);
-            animation: pulseCenter 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 60px) scale(1.2); }
-        }
-
-        @keyframes pulseCenter {
-            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.9); }
-            100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.15); }
-        }
-
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -98,18 +47,15 @@
         }
 
         .hero-title {
-            font-size: 4.2rem;
+            font-size: 4rem;
             font-weight: 800;
             letter-spacing: 14px;
             text-transform: uppercase;
-            background: var(--main-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #ffffff;
             opacity: 0;
             transform: translateY(-50px);
             animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
-            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.3));
         }
 
         @keyframes dropDown {
@@ -123,7 +69,7 @@
             }
         }
 
-        /* Sections Styling */
+        /* Sections General Styling */
         section {
             min-height: 100vh;
             padding: 100px 10%;
@@ -137,8 +83,8 @@
         }
 
         .section-title {
-            font-size: 2.6rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: 700;
             letter-spacing: 5px;
             margin-bottom: 50px;
             text-transform: uppercase;
@@ -147,41 +93,38 @@
             position: relative;
         }
 
+        /* İnce Sade Çizgi */
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--main-gradient);
+            width: 60px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
             margin: 18px auto 0;
-            border-radius: 3px;
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.5);
+            border-radius: 2px;
         }
 
-        /* Biz Kimiz Section */
+        /* 1. Biz Kimiz Section */
         .about-content {
             max-width: 850px;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.9;
             color: var(--text-secondary);
             font-weight: 300;
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             padding: 45px;
-            border-radius: 16px;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 15px 30px var(--subtle-shadow);
+            transition: all 0.4s ease;
         }
 
         .about-content:hover {
             border-color: var(--card-hover-border);
-            box-shadow: 0 20px 50px var(--accent-glow);
         }
 
-        /* Cards Grid Section */
+        /* 2. Misyon, Vizyon, Projeler Section */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -192,41 +135,21 @@
 
         .card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
             padding: 40px 30px;
-            border-radius: 14px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 12px;
+            transition: all 0.4s ease;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--main-gradient);
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            box-shadow: 0 15px 30px var(--subtle-shadow);
         }
 
         .card:hover {
             border-color: var(--card-hover-border);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px var(--accent-glow);
-        }
-
-        .card:hover::before {
-            opacity: 1;
+            transform: translateY(-6px);
         }
 
         .card h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             letter-spacing: 2px;
             margin-bottom: 15px;
             text-transform: uppercase;
@@ -240,7 +163,7 @@
             font-weight: 300;
         }
 
-        /* Ekip Grid */
+        /* 3. Çalışanlar Section */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -252,30 +175,27 @@
 
         .team-card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 14px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             gap: 20px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px var(--subtle-shadow);
         }
 
         .team-card:hover {
             border-color: var(--card-hover-border);
-            transform: translateY(-6px);
-            box-shadow: 0 15px 35px var(--accent-glow);
+            transform: translateY(-4px);
         }
 
         .avatar {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background-color: #1a1c29;
-            border: 2px solid var(--accent-blue);
+            background-color: #12151e;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -283,7 +203,6 @@
             color: #ffffff;
             font-size: 0.8rem;
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
         }
 
         .team-info h4 {
@@ -296,15 +215,15 @@
         .team-info span {
             display: inline-block;
             font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-teal);
-            background: rgba(16, 185, 129, 0.12);
+            font-weight: 600;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.05);
             padding: 4px 10px;
-            border-radius: 6px;
+            border-radius: 4px;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .team-info p {
@@ -314,7 +233,7 @@
             line-height: 1.4;
         }
 
-        /* Yönetim Section */
+        /* 4. Yönetim Section */
         .leaders-wrapper {
             display: flex;
             gap: 40px;
@@ -326,40 +245,36 @@
 
         .leader-card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
             padding: 45px 35px;
-            border-radius: 16px;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             flex: 1;
             min-width: 300px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 30px var(--subtle-shadow);
         }
 
         .leader-card:hover {
             border-color: var(--card-hover-border);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px var(--accent-glow);
+            transform: translateY(-6px);
         }
 
         .leader-avatar {
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background-color: #1a1c29;
-            border: 2px solid var(--accent-pink);
+            background-color: #12151e;
+            border: 1px solid rgba(255, 255, 255, 0.25);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             object-fit: cover;
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.35);
         }
 
         .leader-card h3 {
@@ -371,15 +286,15 @@
 
         .leader-card .title {
             font-size: 0.8rem;
-            font-weight: 700;
-            color: var(--accent-pink);
-            background: rgba(236, 72, 153, 0.12);
+            font-weight: 600;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.08);
             padding: 5px 14px;
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 18px;
-            border: 1px solid rgba(236, 72, 153, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .leader-card p {
@@ -389,10 +304,10 @@
             font-weight: 300;
         }
 
-        /* Scroll Reveal Animation */
+        /* Yavaş Süzülme (Scroll Reveal) Animasyonu */
         .reveal {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(50px);
             transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
@@ -414,11 +329,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ARKA PLAN SOFT GLOW -->
-    <div class="glow-orb glow-orb-1"></div>
-    <div class="glow-orb glow-orb-2"></div>
-    <div class="glow-orb glow-orb-3"></div>
 
     <!-- 1. GİRİŞ ANİMASYONU -->
     <section class="hero">
