@@ -346,6 +346,15 @@
             box-shadow: 0 20px 45px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
+        .leader-link {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: inherit;
+            cursor: pointer;
+        }
+
         .leader-avatar {
             width: 120px;
             height: 120px;
@@ -359,6 +368,11 @@
             color: #ffffff;
             object-fit: cover;
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .leader-link:hover .leader-avatar {
+            transform: scale(1.05);
         }
 
         .leader-card h3 {
@@ -366,6 +380,11 @@
             color: #fff;
             letter-spacing: 2px;
             margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .leader-link:hover h3 {
+            color: #f39c12;
         }
 
         .leader-card .title {
@@ -504,10 +523,12 @@
     <section class="reveal">
         <h2 class="section-title">Yönetim</h2>
         <div class="leaders-wrapper">
-            <!-- Kurucu (Fotoğraflı) -->
+            <!-- Kurucu (Fotoğraflı ve Linkli) -->
             <div class="leader-card">
-                <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
-                <h3>Nuri TIRAŞ</h3>
+                <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
+                    <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
+                    <h3>Nuri TIRAŞ</h3>
+                </a>
                 <div class="title">Kurucu</div>
                 <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucumuz.</p>
             </div>
