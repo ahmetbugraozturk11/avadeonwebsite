@@ -1,13 +1,14 @@
-/* Yazı Kutusu */
+/* Yazı Alanı (Arka plan ve çerçeve tamamen silindi) */
 .text-card {
-    background-color: #000000;
-    padding: 20px 50px;
-    border-radius: 8px;
+    background-color: transparent; /* Arka planı şeffaf yapar (arkayı siler) */
+    background: none;             /* Ekstra arka plan efektlerini kaldırır */
+    border: none;                 /* Çerçeveyi tamamen siler */
+    padding: 0;                   /* İç boşlukları sıfırlar */
+    box-shadow: none;             /* Varsa kutu gölgesini siler */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 1px solid #1a1a1a;
 }
 
 /* AVADEON (Üstte, büyük ve sade) */
