@@ -3,24 +3,358 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AVADEON Yazılım</title>
-    
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="header.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>AVADEON YAZILIM | Kurumsal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #050505;
+            --card-bg: #0a0a0a;
+            --border-color: #1a1a1a;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-gold: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section & Entry Animation */
+        .hero {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 12px;
+            text-transform: uppercase;
+            color: #ffffff;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: dropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            text-align: center;
+        }
+
+        @keyframes dropDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-60px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections General Styling */
+        section {
+            min-height: 100vh;
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+        }
+
+        /* 1. Biz Kimiz Section */
+        .about-content {
+            max-width: 800px;
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* 2. Misyon, Vizyon, Projeler Section */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            border-radius: 6px;
+            transition: border-color 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #444;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* 3. Çalışanlar Section (3+3 Grid) */
+        .team-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .team-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: #151515;
+            border: 1px solid #333;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        .team-info h4 {
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .team-info span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .team-info p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* 4. Başkanımız Section */
+        .leader-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 50px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 450px;
+            width: 100%;
+        }
+
+        .leader-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background-color: #151515;
+            border: 1px solid #333;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+        }
+
+        .leader-card h3 {
+            font-size: 1.3rem;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .leader-card .title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .leader-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .grid-3, .team-row {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+                letter-spacing: 6px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <main class="hero-container">
-        <!-- AVADEON Yazısı (Bayrağın Üstünde, Bağımsız) -->
-        <div class="text-card">
-            <h1 class="brand-title">AVADEON</h1>
-            <span class="brand-subtitle">YAZILIM</span>
-        </div>
+    <!-- 1. GİRİŞ ANİMASYONU -->
+    <section class="hero">
+        <h1 class="hero-title">Avadeon Yazılım</h1>
+    </section>
 
-        <!-- Genişletilmiş Yatay Bayrak Şeridi -->
-        <div class="flag-banner"></div>
-    </main>
+    <!-- 2. BİZ KİMİZ -->
+    <section>
+        <h2 class="section-title">Biz Kimiz</h2>
+        <div class="about-content">
+            Avadeon Yazılım, dijital dünyada kusursuzluğu ve minimalist estetiği benimsemiş öncü bir teknoloji şirketidir. Karmaşadan uzak, yüksek performanslı ve modern mimariler inşa ederek markaların dijital vizyonuna değer katıyoruz.
+        </div>
+    </section>
+
+    <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
+    <section>
+        <h2 class="section-title">Kurumsal Yapı</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Misyonumuz</h3>
+                <p>En ileri yazılım teknolojilerini estetik ve sadelikle buluşturarak müşterilerimize benzersiz dijital deneyimler sunmak.</p>
+            </div>
+            <div class="card">
+                <h3>Vizyonumuz</h3>
+                <p>Küresel ölçekte yenilikçi yazılım çözümleriyle sektörün standartlarını belirleyen lider bir teknoloji markası olmak.</p>
+            </div>
+            <div class="card">
+                <h3>Projelerimiz</h3>
+                <p>Güvenli, ölçeklenebilir ve kurumsal altyapılara sahip özel yazılım projeleriyle iş ortaklarımızın geleceğini tasarlıyoruz.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ÇALIŞANLARIMIZ (3 + 3 DÜZENİ) -->
+    <section>
+        <h2 class="section-title">Ekibimiz</h2>
+        <div class="team-container">
+            <!-- Üst 3'lü Sıra -->
+            <div class="team-row">
+                <div class="team-card">
+                    <div class="avatar">Foto</div>
+                    <div class="team-info">
+                        <h4>Emre Demir</h4>
+                        <span>Lead Developer</span>
+                        <p>Kritik sistem mimarileri ve backend optimizasyonları üzerine çalışıyor.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">Foto</div>
+                    <div class="team-info">
+                        <h4>Zeynep Kaya</h4>
+                        <span>UI/UX Designer</span>
+                        <p>Minimalist ve kullanıcı odaklı lüks arayüz deneyimleri tasarlıyor.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">Foto</div>
+                    <div class="team-info">
+                        <h4>Kerem Çelik</h4>
+                        <span>Cyber Security</span>
+                        <p>Kurumsal ağ güvenliği ve veri koruma protokollerini yönetiyor.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Alt 3'lü Sıra -->
+            <div class="team-row">
+                <div class="team-card">
+                    <div class="avatar">Foto</div>
+                    <div class="team-info">
+                        <h4>Selin Arslan</h4>
+                        <span>Project Manager</span>
+                        <p>Yazılım süreçlerinin zamanında ve kusursuz teslimatını koordine ediyor.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">Foto</div>
+                    <div class="team-info">
+                        <h4>Burak Yılmaz</h4>
+                        <span>Frontend Dev</span>
+                        <p>Arayüz kodlamalarında akıcı animasyonlar ve hız odaklı geliştirmeler yapıyor.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">Foto</div>
+                    <div class="team-info">
+                        <h4>Deniz Aksoy</h4>
+                        <span>DevOps Engineer</span>
+                        <p>Bulut altyapıları, sunucu yönetimi ve kesintisiz deployment süreçleri uzmanı.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BAŞKANIMIZ -->
+    <section>
+        <h2 class="section-title">Yönetim</h2>
+        <div class="leader-card">
+            <div class="leader-avatar">Foto</div>
+            <h3>Ahmet Buğra</h3>
+            <div class="title">Kurucu & Başkan</div>
+            <p>Avadeon Yazılım’ın vizyonunu belirleyen, teknoloji ve strateji odaklı yönetim anlayışıyla şirketi geleceğe taşıyan lider.</p>
+        </div>
+    </section>
 
 </body>
 </html>
