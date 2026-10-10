@@ -49,7 +49,7 @@
         }
 
         /* ------------------------------------
-           1. HERO SECTION (KOYU ROLEX TEMASI)
+           1. HERO SECTION (YUMUŞATILMIŞ YEŞİL IŞIK)
         ------------------------------------ */
         .hero {
             height: 100vh;
@@ -57,7 +57,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #003822 0%, #060807 70%);
+            background: radial-gradient(circle at center, #001f12 0%, #060807 75%);
             position: relative;
             z-index: 2;
             text-align: center;
@@ -67,18 +67,18 @@
 
         .glow-orb-hero {
             position: absolute;
-            width: 650px;
-            height: 650px;
-            background: rgba(0, 96, 57, 0.4);
-            filter: blur(140px);
+            width: 850px;
+            height: 850px;
+            background: rgba(0, 96, 57, 0.16); /* Çok daha yumuşak ve şeffaf yeşil */
+            filter: blur(190px); /* Dağılım artırıldı */
             border-radius: 50%;
             pointer-events: none;
-            animation: pulseOrb 10s ease-in-out infinite alternate;
+            animation: pulseOrb 14s ease-in-out infinite alternate;
         }
 
         @keyframes pulseOrb {
-            0% { transform: scale(0.9) translate(-20px, -20px); opacity: 0.5; }
-            100% { transform: scale(1.2) translate(20px, 20px); opacity: 0.9; }
+            0% { transform: scale(0.9) translate(-20px, -20px); opacity: 0.4; }
+            100% { transform: scale(1.25) translate(30px, 30px); opacity: 0.7; }
         }
 
         .hero-crown {
@@ -460,10 +460,59 @@
         }
 
         /* ------------------------------------
-           3. DİNAMİK SAĞDAN / SOLDAN / AŞAĞIDAN GELİŞ ANİMASYONLARI
+           3. FOOTER (ALT BİLGİ & İLETİŞİM)
         ------------------------------------ */
-        
-        /* Aşağıdan Geliş */
+        .footer {
+            background-color: var(--rolex-black);
+            color: #c2ceca;
+            padding: 90px 10% 60px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            color: var(--rolex-gold);
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .footer-contact {
+            margin-bottom: 30px;
+            font-size: 1.05rem;
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+        }
+
+        .footer-contact a {
+            color: var(--rolex-gold-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .footer-contact a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-copy {
+            font-size: 0.85rem;
+            color: #7a8a83;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* ------------------------------------
+           4. DİNAMİK SAĞDAN / SOLDAN / AŞAĞIDAN GELİŞ ANİMASYONLARI
+        ------------------------------------ */
         .reveal-up {
             opacity: 0;
             transform: translateY(80px);
@@ -475,7 +524,6 @@
             transform: translateY(0);
         }
 
-        /* Soldan Geliş */
         .reveal-left {
             opacity: 0;
             transform: translateX(-120px);
@@ -487,7 +535,6 @@
             transform: translateX(0);
         }
 
-        /* Sağdan Geliş */
         .reveal-right {
             opacity: 0;
             transform: translateX(120px);
@@ -518,12 +565,16 @@
             .reveal-left, .reveal-right {
                 transform: translateY(50px);
             }
+            .footer-contact {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. GİRİŞ ANİMASYONU (KOYU ROLEX TEMASI) -->
+    <!-- 1. GİRİŞ ANİMASYONU (YUMUŞATILMIŞ KOYU ROLEX TEMASI) -->
     <section class="hero">
         <div class="glow-orb-hero"></div>
         
@@ -539,7 +590,7 @@
     <!-- BEYAZ BÖLÜMLERİN KAPLAYICISI -->
     <div class="white-wrapper">
 
-        <!-- 2. BİZ KİMİZ (AŞAĞIDAN SÜZÜLEREK GELİR) -->
+        <!-- 2. BİZ KİMİZ -->
         <section class="white-section">
             <h2 class="section-title reveal-up">Biz Kimiz</h2>
             <div class="about-content reveal-up">
@@ -547,7 +598,7 @@
             </div>
         </section>
 
-        <!-- 3. MİSYON, VİZYON, PROJELERİMİZ (SOLDAN, AŞAĞIDAN VE SAĞDAN GELİR) -->
+        <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
         <section class="white-section">
             <h2 class="section-title reveal-up">Kurumsal Yapı</h2>
             <div class="grid-3">
@@ -566,7 +617,7 @@
             </div>
         </section>
 
-        <!-- 4. EKİBİMİZ (SIRAYLA SOLDAN VE SAĞDAN AKAR) -->
+        <!-- 4. EKİBİMİZ -->
         <section class="white-section">
             <h2 class="section-title reveal-up">Ekibimiz</h2>
             <div class="team-grid">
@@ -613,7 +664,7 @@
             </div>
         </section>
 
-        <!-- 5. YÖNETİM (KURUCU SOLDAN, BAŞKAN SAĞDAN GELİR) -->
+        <!-- 5. YÖNETİM -->
         <section class="white-section">
             <h2 class="section-title reveal-up">Yönetim</h2>
             <div class="leaders-wrapper">
@@ -638,6 +689,16 @@
 
     </div>
 
+    <!-- 6. FOOTER (İLETİŞİM VE TELİF HAKLARI) -->
+    <footer class="footer reveal-up">
+        <h3>Avadeon Yazılım</h3>
+        <div class="footer-contact">
+            <span>E-posta: <a href="mailto:ahmetbugraozturk11@gmail.com">ahmetbugraozturk11@gmail.com</a></span>
+            <span>Telefon: <a href="tel:05521726416">0552 172 64 16</a></span>
+        </div>
+        <p class="footer-copy">&copy; 2026 Avadeon Yazılım. Tüm hakları saklıdır.</p>
+    </footer>
+
     <!-- TEKRARLAYAN KAYDIRMA ANİMASYON SCRIPT KODU -->
     <script>
         const animatedElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
@@ -645,10 +706,8 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Ekran sınırına girince animasyonu başlat
                     entry.target.classList.add('active');
                 } else {
-                    // Ekrandan çıkınca sıfırla (Böylece tekrar yukarı çıkıp inince animasyon yeniden oynar)
                     entry.target.classList.remove('active');
                 }
             });
