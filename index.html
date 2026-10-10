@@ -49,7 +49,7 @@
         }
 
         /* ------------------------------------
-           1. HERO SECTION (YUMUŞATILMIŞ YEŞİL IŞIK)
+           1. HERO SECTION (ESKİ CANLI VE DERİN YEŞİL EFEKT)
         ------------------------------------ */
         .hero {
             height: 100vh;
@@ -57,7 +57,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #001f12 0%, #060807 75%);
+            background: radial-gradient(circle at center, #003822 0%, #060807 70%);
             position: relative;
             z-index: 2;
             text-align: center;
@@ -67,18 +67,18 @@
 
         .glow-orb-hero {
             position: absolute;
-            width: 850px;
-            height: 850px;
-            background: rgba(0, 96, 57, 0.16); /* Çok daha yumuşak ve şeffaf yeşil */
-            filter: blur(190px); /* Dağılım artırıldı */
+            width: 650px;
+            height: 650px;
+            background: rgba(0, 96, 57, 0.4); /* Eski canlı ve net yeşil parlaklık */
+            filter: blur(140px);
             border-radius: 50%;
             pointer-events: none;
-            animation: pulseOrb 14s ease-in-out infinite alternate;
+            animation: pulseOrb 10s ease-in-out infinite alternate;
         }
 
         @keyframes pulseOrb {
-            0% { transform: scale(0.9) translate(-20px, -20px); opacity: 0.4; }
-            100% { transform: scale(1.25) translate(30px, 30px); opacity: 0.7; }
+            0% { transform: scale(0.9) translate(-20px, -20px); opacity: 0.5; }
+            100% { transform: scale(1.2) translate(20px, 20px); opacity: 0.9; }
         }
 
         .hero-crown {
@@ -574,7 +574,7 @@
 </head>
 <body>
 
-    <!-- 1. GİRİŞ ANİMASYONU (YUMUŞATILMIŞ KOYU ROLEX TEMASI) -->
+    <!-- 1. GİRİŞ ANİMASYONU (EFSANE ROLEX CANLI TEMASI) -->
     <section class="hero">
         <div class="glow-orb-hero"></div>
         
