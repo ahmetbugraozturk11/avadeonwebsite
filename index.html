@@ -8,16 +8,16 @@
     <style>
         :root {
             --bg-color: #030305;
-            --card-bg: rgba(13, 14, 21, 0.75);
-            --border-color: #1a1c2e;
+            --card-bg: rgba(15, 14, 12, 0.85);
+            --border-color: #2a2418;
             --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
+            --text-secondary: #a39e93;
             
-            /* Lüks Renk Dokunuşları (Gradient & Accents) */
-            --accent-glow: rgba(0, 242, 254, 0.2);
-            --accent-border: #00f2fe;
-            --gradient-accent: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-            --purple-glow: rgba(122, 60, 255, 0.15);
+            /* Lüks Altın & Bronz Renk Paleti */
+            --accent-glow: rgba(212, 175, 55, 0.2);
+            --accent-border: #d4af37;
+            --gradient-accent: linear-gradient(135deg, #f39c12 0%, #d4af37 50%, #f1c40f 100%);
+            --secondary-glow: rgba(243, 156, 18, 0.15);
         }
 
         * {
@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        /* 1. EN DİŞ KENAR ANİMASYONLU ÇERÇEVE (Outer Border Glow) */
+        /* 1. EN DİŞ KENAR ANİMASYONLU ÇERÇEVE (Altın Tonda) */
         body::before {
             content: '';
             position: fixed;
@@ -44,7 +44,7 @@
             right: 0;
             bottom: 0;
             border: 2px solid transparent;
-            border-image: linear-gradient(135deg, rgba(0, 242, 254, 0.2), rgba(122, 60, 255, 0.1), rgba(0, 242, 254, 0.2)) 1;
+            border-image: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(243, 156, 18, 0.1), rgba(212, 175, 55, 0.25)) 1;
             pointer-events: none;
             z-index: 999;
             animation: borderPulse 6s infinite alternate;
@@ -55,11 +55,11 @@
             100% { opacity: 0.8; }
         }
 
-        /* 2. ARKA PLAN ORTAM IŞIKLARI (Ambient Glow Orbs) */
+        /* 2. ARKA PLAN ORTAM IŞIKLARI (Altın & Amber Glow) */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(130px);
             pointer-events: none;
             z-index: 0;
             animation: floatGlow 10s ease-in-out infinite alternate;
@@ -70,7 +70,7 @@
             left: -100px;
             width: 450px;
             height: 450px;
-            background: rgba(0, 242, 254, 0.12);
+            background: rgba(212, 175, 55, 0.12);
         }
 
         .glow-orb-2 {
@@ -78,7 +78,7 @@
             right: -100px;
             width: 500px;
             height: 500px;
-            background: rgba(122, 60, 255, 0.12);
+            background: rgba(243, 156, 18, 0.1);
             animation-delay: -5s;
         }
 
@@ -110,7 +110,7 @@
             transform: translateY(-50px);
             animation: dropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
-            filter: drop-shadow(0 0 25px rgba(0, 242, 254, 0.3));
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
         }
 
         @keyframes dropDown {
@@ -157,7 +157,7 @@
             background: var(--gradient-accent);
             margin: 15px auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 12px rgba(0, 242, 254, 0.6);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
         }
 
         /* 1. Biz Kimiz Section */
@@ -177,7 +177,7 @@
         }
 
         .about-content:hover {
-            border-color: rgba(0, 242, 254, 0.3);
+            border-color: rgba(212, 175, 55, 0.4);
             box-shadow: 0 10px 35px var(--accent-glow);
         }
 
@@ -213,7 +213,7 @@
         }
 
         .card:hover {
-            border-color: rgba(0, 242, 254, 0.4);
+            border-color: rgba(212, 175, 55, 0.4);
             transform: translateY(-8px);
             box-shadow: 0 12px 35px var(--accent-glow);
         }
@@ -262,22 +262,22 @@
         }
 
         .team-card:hover {
-            border-color: rgba(0, 242, 254, 0.4);
+            border-color: rgba(212, 175, 55, 0.4);
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 242, 254, 0.15);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
         }
 
         .avatar {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background-color: #151725;
-            border: 2px solid rgba(0, 242, 254, 0.3);
+            background-color: #1a160e;
+            border: 2px solid rgba(212, 175, 55, 0.4);
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #00f2fe;
+            color: #d4af37;
             font-size: 0.8rem;
             object-fit: cover;
         }
@@ -293,13 +293,14 @@
             display: inline-block;
             font-size: 0.75rem;
             font-weight: 600;
-            color: #00f2fe;
-            background: rgba(0, 242, 254, 0.1);
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
             padding: 3px 8px;
             border-radius: 4px;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .team-info p {
@@ -335,7 +336,7 @@
         }
 
         .leader-card:hover {
-            border-color: rgba(0, 242, 254, 0.4);
+            border-color: rgba(212, 175, 55, 0.4);
             transform: translateY(-8px);
             box-shadow: 0 12px 35px var(--accent-glow);
         }
@@ -344,15 +345,15 @@
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            background-color: #151725;
-            border: 2px solid #00f2fe;
+            background-color: #1a160e;
+            border: 2px solid #d4af37;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #00f2fe;
+            color: #d4af37;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(0, 242, 254, 0.3);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
         }
 
         .leader-card h3 {
@@ -365,13 +366,14 @@
         .leader-card .title {
             font-size: 0.8rem;
             font-weight: 600;
-            color: #00f2fe;
-            background: rgba(0, 242, 254, 0.1);
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.1);
             padding: 4px 12px;
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .leader-card p {
@@ -395,7 +397,7 @@
 </head>
 <body>
 
-    <!-- ARKA PLAN SÜZÜLEN IŞIK HÜZMELERİ -->
+    <!-- ARKA PLAN SÜZÜLEN IŞIK HÜZMELERİ (ALTIN TONDA) -->
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
 
