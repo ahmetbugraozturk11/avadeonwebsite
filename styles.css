@@ -20,7 +20,7 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 35px; /* Yazı ile bayrak arasındaki mesafe */
+    gap: 50px; /* Yazı ile bayrak arasındaki mesafe */
 }
 
 /* Yatay Bayrak Şeridi (Alt ve üstten genişletildi) */
