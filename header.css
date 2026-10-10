@@ -13,7 +13,7 @@
 
 /* AVADEON (Üstte, büyük ve sade) */
 .brand-title {
-    font-size: 8rem;
+    font-size: 6.4rem;
     font-weight: 800;
     color: #ffffff;
     letter-spacing: 6px;
@@ -24,7 +24,7 @@
 
 /* YAZILIM (Hemen altında, daha küçük) */
 .brand-subtitle {
-    font-size: 1rem;
+    font-size: 2.2rem;
     font-weight: 600;
     color: #a0a0a0;
     letter-spacing: 8px;
