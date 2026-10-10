@@ -12,7 +12,6 @@
             --border-color: #1a1a1a;
             --text-primary: #f3f4f6;
             --text-secondary: #9ca3af;
-            --accent-gold: #e2e8f0;
         }
 
         * {
@@ -129,19 +128,14 @@
             font-weight: 300;
         }
 
-        /* 3. Çalışanlar Section (3+3 Grid) */
-        .team-container {
-            display: flex;
-            flex-direction: column;
+        /* 3. Çalışanlar Section (5 Kişi Dengeli Grid) */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             width: 100%;
             max-width: 1200px;
-        }
-
-        .team-row {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            justify-content: center;
         }
 
         .team-card {
@@ -189,27 +183,36 @@
             line-height: 1.4;
         }
 
-        /* 4. Başkanımız Section */
+        /* 4. Yönetim Section (Kurucu & Başkan Yan Yana) */
+        .leaders-wrapper {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            width: 100%;
+            max-width: 900px;
+            flex-wrap: wrap;
+        }
+
         .leader-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 50px;
+            padding: 40px 30px;
             border-radius: 8px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            max-width: 450px;
-            width: 100%;
+            flex: 1;
+            min-width: 300px;
         }
 
         .leader-avatar {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             background-color: #151515;
             border: 1px solid #333;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -217,7 +220,7 @@
         }
 
         .leader-card h3 {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: #fff;
             letter-spacing: 2px;
             margin-bottom: 5px;
@@ -228,19 +231,19 @@
             color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .leader-card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.6;
             font-weight: 300;
         }
 
         /* Responsive Design */
         @media (max-width: 900px) {
-            .grid-3, .team-row {
+            .grid-3 {
                 grid-template-columns: 1fr;
             }
             .hero-title {
@@ -284,75 +287,71 @@
         </div>
     </section>
 
-    <!-- 4. ÇALIŞANLARIMIZ (3 + 3 DÜZENİ) -->
+    <!-- 4. EKİBİMİZ (5 KİŞİ) -->
     <section>
         <h2 class="section-title">Ekibimiz</h2>
-        <div class="team-container">
-            <!-- Üst 3'lü Sıra -->
-            <div class="team-row">
-                <div class="team-card">
-                    <div class="avatar">Foto</div>
-                    <div class="team-info">
-                        <h4>Emre Demir</h4>
-                        <span>Lead Developer</span>
-                        <p>Kritik sistem mimarileri ve backend optimizasyonları üzerine çalışıyor.</p>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="avatar">Foto</div>
-                    <div class="team-info">
-                        <h4>Zeynep Kaya</h4>
-                        <span>UI/UX Designer</span>
-                        <p>Minimalist ve kullanıcı odaklı lüks arayüz deneyimleri tasarlıyor.</p>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="avatar">Foto</div>
-                    <div class="team-info">
-                        <h4>Kerem Çelik</h4>
-                        <span>Cyber Security</span>
-                        <p>Kurumsal ağ güvenliği ve veri koruma protokollerini yönetiyor.</p>
-                    </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="avatar">Foto</div>
+                <div class="team-info">
+                    <h4>Adnan Mete DAŞÇI</h4>
+                    <span>Yazılım Ekibi</span>
+                    <p>Sistem geliştirme ve mimari altyapı çözümleri üstlenmektedir.</p>
                 </div>
             </div>
-            <!-- Alt 3'lü Sıra -->
-            <div class="team-row">
-                <div class="team-card">
-                    <div class="avatar">Foto</div>
-                    <div class="team-info">
-                        <h4>Selin Arslan</h4>
-                        <span>Project Manager</span>
-                        <p>Yazılım süreçlerinin zamanında ve kusursuz teslimatını koordine ediyor.</p>
-                    </div>
+            <div class="team-card">
+                <div class="avatar">Foto</div>
+                <div class="team-info">
+                    <h4>Onur TAŞ</h4>
+                    <span>Yazılım Ekibi</span>
+                    <p>Arayüz ve kullanıcı deneyimi geliştirme süreçlerini yönetmektedir.</p>
                 </div>
-                <div class="team-card">
-                    <div class="avatar">Foto</div>
-                    <div class="team-info">
-                        <h4>Burak Yılmaz</h4>
-                        <span>Frontend Dev</span>
-                        <p>Arayüz kodlamalarında akıcı animasyonlar ve hız odaklı geliştirmeler yapıyor.</p>
-                    </div>
+            </div>
+            <div class="team-card">
+                <div class="avatar">Foto</div>
+                <div class="team-info">
+                    <h4>Mehmet Emin DOĞAN</h4>
+                    <span>Yazılım Ekibi</span>
+                    <p>Veritabanı optimizasyonu ve arka plan servisleriyle ilgilenmektedir.</p>
                 </div>
-                <div class="team-card">
-                    <div class="avatar">Foto</div>
-                    <div class="team-info">
-                        <h4>Deniz Aksoy</h4>
-                        <span>DevOps Engineer</span>
-                        <p>Bulut altyapıları, sunucu yönetimi ve kesintisiz deployment süreçleri uzmanı.</p>
-                    </div>
+            </div>
+            <div class="team-card">
+                <div class="avatar">Foto</div>
+                <div class="team-info">
+                    <h4>Veysel Efe ALKILINÇ</h4>
+                    <span>Yazılım Ekibi</span>
+                    <p>Güvenlik protokolleri ve sistem performans testlerini yapmaktadır.</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="avatar">Foto</div>
+                <div class="team-info">
+                    <h4>Duran Enes DAŞCI</h4>
+                    <span>Yazılım Ekibi</span>
+                    <p>Proje entegrasyonu ve kalite kontrol süreçlerini yürütmektedir.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 5. BAŞKANIMIZ -->
+    <!-- 5. YÖNETİM (KURUCU VE BAŞKAN) -->
     <section>
         <h2 class="section-title">Yönetim</h2>
-        <div class="leader-card">
-            <div class="leader-avatar">Foto</div>
-            <h3>Ahmet Buğra</h3>
-            <div class="title">Başkanımız</div>
-            <p>Avadeon Yazılım’ın vizyonunu belirleyen, teknoloji ve strateji odaklı yönetim anlayışıyla şirketi geleceğe taşıyan lider.</p>
+        <div class="leaders-wrapper">
+            <!-- Kurucu -->
+            <div class="leader-card">
+                <div class="leader-avatar">Foto</div>
+                <h3>Nuri TIRAŞ</h3>
+                <div class="title">Kurucu</div>
+                <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucu lider.</p>
+            </div>
+            <!-- Başkan -->
+            <div class="leader-card">
+                <div class="leader-avatar">Foto</div>
+                <h3>Ahmet Buğra</h3>
+                <div class="title">Başkan</div>
+                <p>Şirket operasyonlarını, genel yönetim stratejilerini ve projelerin hedeflere ulaşmasını sevk ve idare eden başkan.</p>
+            </div>
         </div>
     </section>
 
