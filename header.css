@@ -1,7 +1,7 @@
-/* Bayrak şeridinin ortasındaki siyah metin kutusu */
+/* Yazı Kutusu */
 .text-card {
-    background-color: #000000; /* Tam siyah */
-    padding: 30px 60px;
+    background-color: #000000;
+    padding: 20px 50px;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
