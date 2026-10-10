@@ -1,0 +1,44 @@
+.hero-header {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.logo-text {
+    font-size: 4.2rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-align: center;
+    
+    /* İnce, keskin Mavi LED Konturu ve Parlaması */
+    text-shadow: 
+        0 0 2px #ffffff,
+        0 0 6px #00d2ff,
+        0 0 12px #0088ff,
+        0 0 24px #0055ff;
+
+    animation: blueLedGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes blueLedGlow {
+    from {
+        text-shadow: 
+            0 0 2px #ffffff,
+            0 0 5px #00d2ff,
+            0 0 10px #0088ff,
+            0 0 20px #0055ff;
+    }
+    to {
+        text-shadow: 
+            0 0 3px #ffffff,
+            0 0 8px #00f0ff,
+            0 0 16px #00a2ff,
+            0 0 32px #0066ff;
+    }
+}
