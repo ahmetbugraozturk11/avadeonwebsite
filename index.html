@@ -19,20 +19,18 @@
             --rolex-dark-green: #002b19;
             --rolex-green: #006039;
             --rolex-gold: #d4af37;
-            --rolex-gold-light: #f3e5ab;
-            --rolex-gold-dark: #aa820a;
+            --rolex-gold-dark: #b89320;
+            --rolex-gold-light: #f7e6a1;
             
-            --card-bg: rgba(10, 18, 14, 0.65);
-            --border-color: rgba(212, 175, 55, 0.18);
+            /* WHITE THEME PALETTE */
+            --bg-white: #fcfbf9;
+            --card-white: #ffffff;
+            --text-dark: #121814;
+            --text-muted: #526058;
+            --border-light: rgba(212, 175, 55, 0.25);
             
-            --text-primary: #ffffff;
-            --text-secondary: #c2ceca;
-            
-            --rolex-gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa820a 100%);
-            --rolex-green-gradient: linear-gradient(135deg, #006039 0%, #002b19 100%);
-            
-            --gold-glow: rgba(212, 175, 55, 0.25);
-            --green-glow: rgba(0, 96, 57, 0.35);
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #b89320 50%, #8c6d10 100%);
+            --green-gradient: linear-gradient(135deg, #006039 0%, #002b19 100%);
         }
 
         * {
@@ -43,82 +41,46 @@
 
         body {
             background-color: var(--rolex-black);
-            color: var(--text-primary);
+            color: #ffffff;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
             scroll-behavior: smooth;
             position: relative;
         }
 
-        /* ARKA PLAN ROLEX ORTAM IŞIKLARI */
-        .glow-orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(140px);
-            pointer-events: none;
-            z-index: 0;
-            animation: floatGlow 14s ease-in-out infinite alternate;
-        }
-
-        /* Rolex Zümrüt Yeşili Işık */
-        .glow-orb-1 {
-            top: -100px;
-            left: -100px;
-            width: 600px;
-            height: 600px;
-            background: rgba(0, 96, 57, 0.25);
-        }
-
-        /* Rolex Sıcak Altın Işık */
-        .glow-orb-2 {
-            bottom: -100px;
-            right: -100px;
-            width: 650px;
-            height: 650px;
-            background: rgba(212, 175, 55, 0.12);
-            animation-delay: -7s;
-        }
-
-        .glow-orb-3 {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: rgba(0, 43, 25, 0.3);
-            animation: pulseCenter 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes floatGlow {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 70px) scale(1.15); }
-        }
-
-        @keyframes pulseCenter {
-            0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.9); }
-            100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
-        }
-
-        /* HERO SECTION */
+        /* ------------------------------------
+           1. HERO SECTION (KOYU ROLEX TEMASI)
+        ------------------------------------ */
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: transparent;
+            background: radial-gradient(circle at center, #003822 0%, #060807 70%);
             position: relative;
-            z-index: 1;
+            z-index: 2;
             text-align: center;
+            padding: 0 20px;
+        }
+
+        .glow-orb-hero {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 96, 57, 0.35);
+            filter: blur(120px);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .hero-crown {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             margin-bottom: 25px;
             opacity: 0;
             animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
         }
 
         .hero-title {
@@ -127,7 +89,7 @@
             font-weight: 700;
             letter-spacing: 16px;
             text-transform: uppercase;
-            background: var(--rolex-gold-gradient);
+            background: linear-gradient(135deg, #f7e6a1 0%, #d4af37 50%, #aa820a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             opacity: 0;
@@ -137,11 +99,11 @@
         }
 
         .hero-subtitle {
-            font-size: 1rem;
-            letter-spacing: 6px;
+            font-size: 1.05rem;
+            letter-spacing: 7px;
             text-transform: uppercase;
-            color: var(--text-secondary);
-            margin-top: 15px;
+            color: #c2ceca;
+            margin-top: 18px;
             opacity: 0;
             animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
         }
@@ -157,17 +119,26 @@
             }
         }
 
-        /* SECTIONS GENERAL */
-        section {
-            min-height: 100vh;
+        /* ------------------------------------
+           2. BEYAZ LÜKS İÇERİK BÖLÜMLERİ
+        ------------------------------------ */
+        .white-wrapper {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.5);
+            border-top: 3px solid var(--rolex-gold);
+        }
+
+        section.white-section {
             padding: 120px 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.12);
+            border-bottom: 1px solid rgba(0, 96, 57, 0.08);
             position: relative;
-            z-index: 1;
         }
 
         .section-title {
@@ -177,7 +148,7 @@
             letter-spacing: 6px;
             margin-bottom: 60px;
             text-transform: uppercase;
-            color: #ffffff;
+            color: var(--rolex-dark-green);
             text-align: center;
             position: relative;
         }
@@ -186,29 +157,27 @@
             content: '';
             display: block;
             width: 70px;
-            height: 2px;
-            background: var(--rolex-gold-gradient);
+            height: 3px;
+            background: var(--gold-gradient);
             margin: 20px auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
 
-        /* 1. BİZ KİMİZ SECTION */
+        /* BİZ KİMİZ */
         .about-content {
             max-width: 900px;
             text-align: center;
             font-size: 1.25rem;
             line-height: 2;
-            color: var(--text-secondary);
-            font-weight: 300;
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            color: var(--text-dark);
+            font-weight: 400;
+            background: var(--card-white);
             padding: 55px;
-            border-radius: 4px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(212, 175, 55, 0.2);
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 6px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 20px 40px rgba(0, 60, 30, 0.05);
+            transition: all 0.4s ease;
             position: relative;
         }
 
@@ -216,16 +185,17 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--rolex-gold-gradient);
+            height: 3px;
+            background: var(--gold-gradient);
+            border-radius: 6px 6px 0 0;
         }
 
         .about-content:hover {
-            border-color: var(--rolex-gold);
-            box-shadow: 0 25px 60px var(--green-glow), inset 0 1px 0 rgba(212, 175, 55, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 30px 50px rgba(0, 96, 57, 0.12);
         }
 
-        /* 2. MİSYON, VİZYON, PROJELER */
+        /* KURUMSAL YAPISI (MİSYON, VİZYON, PROJELER) */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -235,57 +205,47 @@
         }
 
         .card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
+            background-color: var(--card-white);
+            border: 1px solid var(--border-light);
             padding: 45px 35px;
-            border-radius: 4px;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: 6px;
+            transition: all 0.4s ease;
             position: relative;
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
         }
 
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--rolex-gold-gradient);
-            opacity: 0.3;
-            transition: opacity 0.5s ease;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--green-gradient);
+            opacity: 0.8;
+            border-radius: 6px 6px 0 0;
         }
 
         .card:hover {
-            border-color: var(--rolex-gold);
             transform: translateY(-8px);
-            box-shadow: 0 20px 45px var(--gold-glow), inset 0 1px 0 rgba(212, 175, 55, 0.4);
-        }
-
-        .card:hover::before {
-            opacity: 1;
+            border-color: var(--rolex-gold);
+            box-shadow: 0 25px 45px rgba(0, 96, 57, 0.12);
         }
 
         .card h3 {
             font-family: 'Cinzel', serif;
             font-size: 1.3rem;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 20px;
             text-transform: uppercase;
-            color: var(--rolex-gold-light);
+            color: var(--rolex-green);
         }
 
         .card p {
-            color: var(--text-secondary);
-            font-size: 0.98rem;
+            color: var(--text-muted);
+            font-size: 1rem;
             line-height: 1.7;
-            font-weight: 300;
+            font-weight: 400;
         }
 
-        /* 3. EKİBİMİZ */
+        /* EKİBİMİZ */
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -296,23 +256,21 @@
         }
 
         .team-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
+            background-color: var(--card-white);
+            border: 1px solid var(--border-light);
             padding: 30px;
-            border-radius: 4px;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             gap: 22px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
         }
 
         .team-card:hover {
-            border-color: var(--rolex-gold);
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px var(--green-glow), inset 0 1px 0 rgba(212, 175, 55, 0.3);
+            border-color: var(--rolex-green);
+            box-shadow: 0 20px 35px rgba(0, 96, 57, 0.12);
         }
 
         .avatar {
@@ -320,7 +278,7 @@
             height: 70px;
             border-radius: 50%;
             background-color: var(--rolex-dark-green);
-            border: 1px solid var(--rolex-gold);
+            border: 2px solid var(--rolex-gold);
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -329,13 +287,13 @@
             font-size: 0.75rem;
             letter-spacing: 1px;
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(0, 96, 57, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .team-info h4 {
             font-family: 'Cinzel', serif;
             font-size: 1.1rem;
-            color: #ffffff;
+            color: var(--text-dark);
             margin-bottom: 6px;
             letter-spacing: 1px;
         }
@@ -344,24 +302,24 @@
             display: inline-block;
             font-size: 0.7rem;
             font-weight: 700;
-            color: var(--rolex-gold-light);
-            background: rgba(0, 96, 57, 0.4);
+            color: var(--rolex-dark-green);
+            background: rgba(0, 96, 57, 0.08);
             padding: 4px 10px;
-            border-radius: 2px;
+            border-radius: 3px;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 1px solid rgba(0, 96, 57, 0.2);
         }
 
         .team-info p {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 400;
             line-height: 1.5;
         }
 
-        /* 4. YÖNETİM SECTION */
+        /* YÖNETİM */
         .leaders-wrapper {
             display: flex;
             gap: 40px;
@@ -372,34 +330,33 @@
         }
 
         .leader-card {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-color);
+            background-color: var(--card-white);
+            border: 1px solid var(--border-light);
             padding: 50px 40px;
-            border-radius: 4px;
+            border-radius: 6px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             flex: 1;
             min-width: 310px;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s ease;
             position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.04);
         }
 
         .leader-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 2px;
-            background: var(--rolex-gold-gradient);
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--gold-gradient);
+            border-radius: 6px 6px 0 0;
         }
 
         .leader-card:hover {
-            border-color: var(--rolex-gold);
             transform: translateY(-8px);
-            box-shadow: 0 20px 45px var(--gold-glow), inset 0 1px 0 rgba(212, 175, 55, 0.35);
+            border-color: var(--rolex-gold);
+            box-shadow: 0 25px 45px rgba(212, 175, 55, 0.2);
         }
 
         .leader-link {
@@ -416,14 +373,14 @@
             height: 125px;
             border-radius: 50%;
             background-color: var(--rolex-dark-green);
-            border: 2px solid var(--rolex-gold);
+            border: 3px solid var(--rolex-gold);
             margin-bottom: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--rolex-gold-light);
             object-fit: cover;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
             transition: transform 0.4s ease;
         }
 
@@ -434,41 +391,41 @@
         .leader-card h3 {
             font-family: 'Cinzel', serif;
             font-size: 1.4rem;
-            color: #ffffff;
+            color: var(--text-dark);
             letter-spacing: 2px;
             margin-bottom: 8px;
             transition: color 0.3s ease;
         }
 
         .leader-link:hover h3 {
-            color: var(--rolex-gold-light);
+            color: var(--rolex-green);
         }
 
         .leader-card .title {
             font-size: 0.75rem;
             font-weight: 700;
-            color: var(--rolex-gold-light);
-            background: rgba(0, 96, 57, 0.5);
+            color: var(--rolex-dark-green);
+            background: rgba(212, 175, 55, 0.15);
             padding: 6px 16px;
-            border-radius: 2px;
+            border-radius: 3px;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.35);
+            border: 1px solid rgba(212, 175, 55, 0.4);
         }
 
         .leader-card p {
-            color: var(--text-secondary);
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.7;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         /* SCROLL REVEAL ANIMATION */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
-            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
 
@@ -485,18 +442,18 @@
                 font-size: 2.5rem;
                 letter-spacing: 8px;
             }
+            section.white-section {
+                padding: 80px 6%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ARKA PLAN SÜZÜLEN IŞIK HÜZMELERİ -->
-    <div class="glow-orb glow-orb-1"></div>
-    <div class="glow-orb glow-orb-2"></div>
-    <div class="glow-orb glow-orb-3"></div>
-
-    <!-- 1. GİRİŞ ANİMASYONU -->
+    <!-- 1. GİRİŞ ANİMASYONU (KOYU ROLEX TEMASI) -->
     <section class="hero">
+        <div class="glow-orb-hero"></div>
+        
         <!-- ROLEX CROWN SVG EMBEDDED -->
         <svg class="hero-crown" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5Z" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -506,102 +463,107 @@
         <p class="hero-subtitle">Mükemmellik &amp; Dijital Gelecek</p>
     </section>
 
-    <!-- 2. BİZ KİMİZ -->
-    <section class="reveal">
-        <h2 class="section-title">Biz Kimiz</h2>
-        <div class="about-content">
-            Avadeon Yazılım; temelleri Kahramanmaraş Onikişubat Ticaret ve Sanayi Odası okulunda atılmış, yazılıma meraklı ve dinamik genç bir ekiptir. Lise yıllarında başlayan bu birlikteliğimizi bugün de yeni projeler üreterek, kendimizi sürekli geliştirerek ve faydalı yazılımlar ortaya koyarak sürdürüyoruz.
-        </div>
-    </section>
+    <!-- BEYAZ BÖLÜMLERİN KAPLAYICISI -->
+    <div class="white-wrapper">
 
-    <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
-    <section class="reveal">
-        <h2 class="section-title">Kurumsal Yapı</h2>
-        <div class="grid-3">
-            <div class="card">
-                <h3>Misyonumuz</h3>
-                <p>Yerli ve milli yazılım çözümleri üreterek vatanımıza, milletimize ve ülkemizin dijital geleceğine katkı sağlamak; genç ve dinamik ekibimizle faydalı projelere imza atmak.</p>
+        <!-- 2. BİZ KİMİZ -->
+        <section class="white-section reveal">
+            <h2 class="section-title">Biz Kimiz</h2>
+            <div class="about-content">
+                Avadeon Yazılım; temelleri Kahramanmaraş Onikişubat Ticaret ve Sanayi Odası okulunda atılmış, yazılıma meraklı ve dinamik genç bir ekiptir. Lise yıllarında başlayan bu birlikteliğimizi bugün de yeni projeler üreterek, kendimizi sürekli geliştirerek ve faydalı yazılımlar ortaya koyarak sürdürüyoruz.
             </div>
-            <div class="card">
-                <h3>Vizyonumuz</h3>
-                <p>Teknolojiyi önce kendi insanımızın ve kurumlarımızın hizmetine sunmak; dürüst, güvenilir ve sürdürülebilir yazılımlarla ülkemizin teknolojik bağımsızlığına ufak da olsa bir tuğla koyabilmek.</p>
-            </div>
-            <div class="card">
-                <h3>Projelerimiz</h3>
-                <p>ETAPMYS, Etkileşimli akıllı tahtaları merkezi olarak yönetmek için geliştirdiğimiz programımız.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 4. EKİBİMİZ (5 KİŞİ) -->
-    <section class="reveal">
-        <h2 class="section-title">Ekibimiz</h2>
-        <div class="team-grid">
-            <div class="team-card">
-                <div class="avatar">FOTO</div>
-                <div class="team-info">
-                    <h4>Adnan Mete DAŞÇI</h4>
-                    <span>Donanım Ekibi</span>
-                    <p>Proje entegrasyonu ve kalite kontrol süreçlerini yürütmektedir.</p>
+        <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
+        <section class="white-section reveal">
+            <h2 class="section-title">Kurumsal Yapı</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <h3>Misyonumuz</h3>
+                    <p>Yerli ve milli yazılım çözümleri üreterek vatanımıza, milletimize ve ülkemizin dijital geleceğine katkı sağlamak; genç ve dinamik ekibimizle faydalı projelere imza atmak.</p>
+                </div>
+                <div class="card">
+                    <h3>Vizyonumuz</h3>
+                    <p>Teknolojiyi önce kendi insanımızın ve kurumlarımızın hizmetine sunmak; dürüst, güvenilir ve sürdürülebilir yazılımlarla ülkemizin teknolojik bağımsızlığına ufak da olsa bir tuğla koyabilmek.</p>
+                </div>
+                <div class="card">
+                    <h3>Projelerimiz</h3>
+                    <p>ETAPMYS, Etkileşimli akıllı tahtaları merkezi olarak yönetmek için geliştirdiğimiz programımız.</p>
                 </div>
             </div>
-            <div class="team-card">
-                <div class="avatar">FOTO</div>
-                <div class="team-info">
-                    <h4>Onur TAŞ</h4>
-                    <span>Yazılım Ekibi</span>
-                    <p>Arayüz ve kullanıcı deneyimi geliştirme süreçlerini yönetmektedir.</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="avatar">FOTO</div>
-                <div class="team-info">
-                    <h4>Mehmet Emin DOĞAN</h4>
-                    <span>Yazılım Ekibi</span>
-                    <p>Veritabanı optimizasyonu ve arka plan servisleriyle ilgilenmektedir.</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="avatar">FOTO</div>
-                <div class="team-info">
-                    <h4>Veysel Efe ALKILINÇ</h4>
-                    <span>Yazılım Ekibi</span>
-                    <p>Güvenlik protokolleri ve sistem performans testlerini yapmaktadır.</p>
-                </div>
-            </div>
-            <div class="team-card">
-                <div class="avatar">FOTO</div>
-                <div class="team-info">
-                    <h4>Duran Enes DAŞCI</h4>
-                    <span>Yazılım Ekibi</span>
-                    <p>Fiziksel sunucularımız ve ekipmanlarımızın tamirini üstlenmektedir.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. YÖNETİM -->
-    <section class="reveal">
-        <h2 class="section-title">Yönetim</h2>
-        <div class="leaders-wrapper">
-            <!-- Kurucu -->
-            <div class="leader-card">
-                <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
-                    <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
-                    <h3>Nuri TIRAŞ</h3>
-                </a>
-                <div class="title">Kurucu</div>
-                <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucumuz.</p>
+        <!-- 4. EKİBİMİZ (5 KİŞİ) -->
+        <section class="white-section reveal">
+            <h2 class="section-title">Ekibimiz</h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="avatar">FOTO</div>
+                    <div class="team-info">
+                        <h4>Adnan Mete DAŞÇI</h4>
+                        <span>Donanım Ekibi</span>
+                        <p>Proje entegrasyonu ve kalite kontrol süreçlerini yürütmektedir.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">FOTO</div>
+                    <div class="team-info">
+                        <h4>Onur TAŞ</h4>
+                        <span>Yazılım Ekibi</span>
+                        <p>Arayüz ve kullanıcı deneyimi geliştirme süreçlerini yönetmektedir.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">FOTO</div>
+                    <div class="team-info">
+                        <h4>Mehmet Emin DOĞAN</h4>
+                        <span>Yazılım Ekibi</span>
+                        <p>Veritabanı optimizasyonu ve arka plan servisleriyle ilgilenmektedir.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">FOTO</div>
+                    <div class="team-info">
+                        <h4>Veysel Efe ALKILINÇ</h4>
+                        <span>Yazılım Ekibi</span>
+                        <p>Güvenlik protokolleri ve sistem performans testlerini yapmaktadır.</p>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="avatar">FOTO</div>
+                    <div class="team-info">
+                        <h4>Duran Enes DAŞCI</h4>
+                        <span>Yazılım Ekibi</span>
+                        <p>Fiziksel sunucularımız ve ekipmanlarımızın tamirini üstlenmektedir.</p>
+                    </div>
+                </div>
             </div>
-            <!-- Başkan -->
-            <div class="leader-card">
-                <div class="leader-avatar">FOTO</div>
-                <h3>Ahmet Buğra</h3>
-                <div class="title">Başkan</div>
-                <p>Şirket operasyonlarını, genel yönetim stratejilerini ve projelerin hedeflere ulaşmasını idare eden başkanımız.</p>
+        </section>
+
+        <!-- 5. YÖNETİM -->
+        <section class="white-section reveal">
+            <h2 class="section-title">Yönetim</h2>
+            <div class="leaders-wrapper">
+                <!-- Kurucu -->
+                <div class="leader-card">
+                    <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
+                        <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
+                        <h3>Nuri TIRAŞ</h3>
+                    </a>
+                    <div class="title">Kurucu</div>
+                    <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucumuz.</p>
+                </div>
+                <!-- Başkan -->
+                <div class="leader-card">
+                    <div class="leader-avatar">FOTO</div>
+                    <h3>Ahmet Buğra</h3>
+                    <div class="title">Başkan</div>
+                    <p>Şirket operasyonlarını, genel yönetim stratejilerini ve projelerin hedeflere ulaşmasını idare eden başkanımız.</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+    </div>
 
     <!-- KAYDIRMA ANİMASYON SCRIPT KODU -->
     <script>
