@@ -1,44 +1,32 @@
-.hero-header {
-    width: 100%;
-    height: 100vh;
+/* Bayrak şeridinin ortasındaki siyah metin kutusu */
+.text-card {
+    background-color: #000000; /* Tam siyah */
+    padding: 30px 60px;
+    border-radius: 8px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    position: relative;
-    z-index: 10;
+    justify-content: center;
+    border: 1px solid #1a1a1a;
 }
 
-.logo-text {
-    font-size: 4.2rem;
-    font-weight: 700;
+/* AVADEON (Üstte, büyük ve sade) */
+.brand-title {
+    font-size: 3.2rem;
+    font-weight: 800;
     color: #ffffff;
-    text-transform: uppercase;
     letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
     text-align: center;
-    
-    /* İnce, keskin Mavi LED Konturu ve Parlaması */
-    text-shadow: 
-        0 0 2px #ffffff,
-        0 0 6px #00d2ff,
-        0 0 12px #0088ff,
-        0 0 24px #0055ff;
-
-    animation: blueLedGlow 2s ease-in-out infinite alternate;
 }
 
-@keyframes blueLedGlow {
-    from {
-        text-shadow: 
-            0 0 2px #ffffff,
-            0 0 5px #00d2ff,
-            0 0 10px #0088ff,
-            0 0 20px #0055ff;
-    }
-    to {
-        text-shadow: 
-            0 0 3px #ffffff,
-            0 0 8px #00f0ff,
-            0 0 16px #00a2ff,
-            0 0 32px #0066ff;
-    }
+/* YAZILIM (Hemen altında, daha küçük) */
+.brand-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #a0a0a0;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    text-align: center;
 }
