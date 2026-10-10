@@ -13,9 +13,10 @@
             --text-primary: #ffffff;
             --text-secondary: #9ca3af;
             
-            /* Lüks Beyaz / Gümüş Vurgu Paleti */
-            --accent-glow: rgba(255, 255, 255, 0.08);
-            --gradient-accent: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            /* Altın & Beyaz Karışımı Geçişler */
+            --gold-white-gradient: linear-gradient(135deg, #ffffff 0%, #d4af37 50%, #f39c12 100%);
+            --accent-glow: rgba(212, 175, 55, 0.15);
+            --white-glow: rgba(255, 255, 255, 0.1);
         }
 
         * {
@@ -33,7 +34,7 @@
             position: relative;
         }
 
-        /* ARKA PLAN ORTAM IŞIKLARI (Sade Beyaz Glow) */
+        /* ARKA PLAN ORTAM IŞIKLARI (Altın & Beyaz Süzülen Glow) */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -48,7 +49,7 @@
             left: -100px;
             width: 450px;
             height: 450px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(212, 175, 55, 0.08);
         }
 
         .glow-orb-2 {
@@ -56,7 +57,7 @@
             right: -100px;
             width: 500px;
             height: 500px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.05);
             animation-delay: -5s;
         }
 
@@ -86,7 +87,7 @@
             transform: translateY(-50px);
             animation: dropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.25));
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.25));
         }
 
         @keyframes dropDown {
@@ -125,15 +126,16 @@
             position: relative;
         }
 
+        /* Altın ve Beyaz Karışımı Çizgi */
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 2px;
-            background: #ffffff;
+            width: 70px;
+            height: 3px;
+            background: var(--gold-white-gradient);
             margin: 15px auto 0;
             border-radius: 2px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.5);
         }
 
         /* 1. Biz Kimiz Section */
@@ -153,7 +155,7 @@
         }
 
         .about-content:hover {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(212, 175, 55, 0.3);
             box-shadow: 0 10px 35px var(--accent-glow);
         }
 
@@ -176,20 +178,21 @@
             overflow: hidden;
         }
 
+        /* Kart Üstüne Altın & Beyaz Geçişli Çizgi */
         .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 2px;
-            background: #ffffff;
+            height: 3px;
+            background: var(--gold-white-gradient);
             opacity: 0;
             transition: opacity 0.4s ease;
         }
 
         .card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(212, 175, 55, 0.3);
             transform: translateY(-8px);
             box-shadow: 0 12px 35px var(--accent-glow);
         }
@@ -235,9 +238,9 @@
         }
 
         .team-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(212, 175, 55, 0.3);
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 25px var(--accent-glow);
         }
 
         .avatar {
@@ -245,7 +248,7 @@
             height: 70px;
             border-radius: 50%;
             background-color: #111115;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(212, 175, 55, 0.4);
             flex-shrink: 0;
             display: flex;
             align-items: center;
@@ -266,14 +269,14 @@
             display: inline-block;
             font-size: 0.75rem;
             font-weight: 600;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.08);
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.08);
             padding: 3px 8px;
             border-radius: 4px;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .team-info p {
@@ -309,7 +312,7 @@
         }
 
         .leader-card:hover {
-            border-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(212, 175, 55, 0.4);
             transform: translateY(-8px);
             box-shadow: 0 12px 35px var(--accent-glow);
         }
@@ -319,14 +322,14 @@
             height: 110px;
             border-radius: 50%;
             background-color: #111115;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 2px solid #d4af37;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #ffffff;
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
         .leader-card h3 {
@@ -339,14 +342,14 @@
         .leader-card .title {
             font-size: 0.8rem;
             font-weight: 600;
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.08);
+            color: #d4af37;
+            background: rgba(212, 175, 55, 0.08);
             padding: 4px 12px;
             border-radius: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .leader-card p {
@@ -354,6 +357,18 @@
             font-size: 0.9rem;
             line-height: 1.6;
             font-weight: 300;
+        }
+
+        /* 5. KAYDIRMA (SCROLL) ANİMASYONLARI */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive Design */
@@ -380,7 +395,7 @@
     </section>
 
     <!-- 2. BİZ KİMİZ -->
-    <section>
+    <section class="reveal">
         <h2 class="section-title">Biz Kimiz</h2>
         <div class="about-content">
             Avadeon Yazılım; temelleri Kahramanmaraş Onikişubat Ticaret ve Sanayi Odası okulunda atılmış, yazılıma meraklı ve dinamik genç bir ekiptir. Lise yıllarında başlayan bu birlikteliğimizi bugün de yeni projeler üreterek, kendimizi sürekli geliştirerek ve faydalı yazılımlar ortaya koyarak sürdürüyoruz.
@@ -388,7 +403,7 @@
     </section>
 
     <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
-    <section>
+    <section class="reveal">
         <h2 class="section-title">Kurumsal Yapı</h2>
         <div class="grid-3">
             <div class="card">
@@ -407,7 +422,7 @@
     </section>
 
     <!-- 4. EKİBİMİZ (5 KİŞİ) -->
-    <section>
+    <section class="reveal">
         <h2 class="section-title">Ekibimiz</h2>
         <div class="team-grid">
             <div class="team-card">
@@ -454,7 +469,7 @@
     </section>
 
     <!-- 5. YÖNETİM (KURUCU VE BAŞKAN) -->
-    <section>
+    <section class="reveal">
         <h2 class="section-title">Yönetim</h2>
         <div class="leaders-wrapper">
             <!-- Kurucu (Fotoğraflı) -->
@@ -473,6 +488,25 @@
             </div>
         </div>
     </section>
+
+    <!-- KAYDIRMA ANİMASYON SCRIPT KODU -->
+    <script>
+        const reveals = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.15
+        });
+
+        reveals.forEach(reveal => {
+            observer.observe(reveal);
+        });
+    </script>
 
 </body>
 </html>
