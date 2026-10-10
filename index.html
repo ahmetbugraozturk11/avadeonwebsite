@@ -35,7 +35,7 @@
             position: relative;
         }
 
-        /* 1. EN DİŞ KENAR ANİMASYONLU ÇERÇEVE (Altın Tonda) */
+        /* 1. EN DİŞ KENAR ANİMASYONLU ÇERÇEVE */
         body::before {
             content: '';
             position: fixed;
@@ -55,7 +55,7 @@
             100% { opacity: 0.8; }
         }
 
-        /* 2. ARKA PLAN ORTAM IŞIKLARI (Altın & Amber Glow) */
+        /* 2. ARKA PLAN ORTAM IŞIKLARI */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -106,11 +106,13 @@
             background: var(--gradient-accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            /* Harf Bazlı Çok İnce Beyaz Çerçeve */
+            -webkit-text-stroke: 0.6px rgba(255, 255, 255, 0.85);
             opacity: 0;
             transform: translateY(-50px);
             animation: dropDown 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center;
-            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2)) drop-shadow(0 0 25px rgba(212, 175, 55, 0.3));
         }
 
         @keyframes dropDown {
@@ -147,6 +149,9 @@
             color: #fff;
             text-align: center;
             position: relative;
+            /* Bölüm Başlıklarına İnce Beyaz Çerçeve */
+            -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.7);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.15));
         }
 
         .section-title::after {
@@ -231,6 +236,8 @@
             background: var(--gradient-accent);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            /* Kart Başlıklarına İnce Beyaz Çerçeve */
+            -webkit-text-stroke: 0.4px rgba(255, 255, 255, 0.6);
         }
 
         .card p {
@@ -397,7 +404,7 @@
 </head>
 <body>
 
-    <!-- ARKA PLAN SÜZÜLEN IŞIK HÜZMELERİ (ALTIN TONDA) -->
+    <!-- ARKA PLAN SÜZÜLEN IŞIK HÜZMELERİ -->
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
 
