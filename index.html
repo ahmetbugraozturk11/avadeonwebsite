@@ -7,20 +7,32 @@
     <!-- SITE LOGOSU / FAVICON -->
     <link rel="icon" type="image/jpeg" href="logo.jpg">
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FONTS: Cinzel (Rolex Serif Style) & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-color: #060609;
-            --card-bg: rgba(22, 24, 35, 0.55);
-            --border-color: rgba(255, 255, 255, 0.12);
-            --text-primary: #ffffff;
-            --text-secondary: #cbd5e1;
+            /* ROLEX ICONIC COLOR PALETTE */
+            --rolex-black: #060807;
+            --rolex-dark-green: #002b19;
+            --rolex-green: #006039;
+            --rolex-gold: #d4af37;
+            --rolex-gold-light: #f3e5ab;
+            --rolex-gold-dark: #aa820a;
             
-            /* Altın & Parlak Beyaz Katman Paleti */
-            --gold-white-gradient: linear-gradient(135deg, #ffffff 0%, #f39c12 50%, #d4af37 100%);
-            --accent-glow: rgba(212, 175, 55, 0.25);
-            --white-glow: rgba(255, 255, 255, 0.2);
-            --card-hover-border: rgba(243, 156, 18, 0.5);
+            --card-bg: rgba(10, 18, 14, 0.65);
+            --border-color: rgba(212, 175, 55, 0.18);
+            
+            --text-primary: #ffffff;
+            --text-secondary: #c2ceca;
+            
+            --rolex-gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa820a 100%);
+            --rolex-green-gradient: linear-gradient(135deg, #006039 0%, #002b19 100%);
+            
+            --gold-glow: rgba(212, 175, 55, 0.25);
+            --green-glow: rgba(0, 96, 57, 0.35);
         }
 
         * {
@@ -30,7 +42,7 @@
         }
 
         body {
-            background-color: var(--bg-color);
+            background-color: var(--rolex-black);
             color: var(--text-primary);
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
@@ -38,82 +50,106 @@
             position: relative;
         }
 
-        /* ARKA PLAN ORTAM IŞIKLARI */
+        /* ARKA PLAN ROLEX ORTAM IŞIKLARI */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(120px);
+            filter: blur(140px);
             pointer-events: none;
             z-index: 0;
-            animation: floatGlow 12s ease-in-out infinite alternate;
+            animation: floatGlow 14s ease-in-out infinite alternate;
         }
 
-        /* Sol Üst Zümrüt Yeşili Işık */
+        /* Rolex Zümrüt Yeşili Işık */
         .glow-orb-1 {
-            top: -120px;
+            top: -100px;
             left: -100px;
-            width: 550px;
-            height: 550px;
-            background: rgba(16, 185, 129, 0.12);
-        }
-
-        .glow-orb-2 {
-            bottom: -120px;
-            right: -100px;
             width: 600px;
             height: 600px;
-            background: rgba(255, 255, 255, 0.08);
-            animation-delay: -6s;
+            background: rgba(0, 96, 57, 0.25);
+        }
+
+        /* Rolex Sıcak Altın Işık */
+        .glow-orb-2 {
+            bottom: -100px;
+            right: -100px;
+            width: 650px;
+            height: 650px;
+            background: rgba(212, 175, 55, 0.12);
+            animation-delay: -7s;
         }
 
         .glow-orb-3 {
-            top: 40%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 700px;
-            height: 700px;
-            background: rgba(243, 156, 18, 0.05);
-            animation: pulseCenter 8s ease-in-out infinite alternate;
+            width: 800px;
+            height: 800px;
+            background: rgba(0, 43, 25, 0.3);
+            animation: pulseCenter 10s ease-in-out infinite alternate;
         }
 
         @keyframes floatGlow {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(50px, 60px) scale(1.2); }
+            100% { transform: translate(60px, 70px) scale(1.15); }
         }
 
         @keyframes pulseCenter {
             0% { opacity: 0.3; transform: translate(-50%, -50%) scale(0.9); }
-            100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.1); }
+            100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.1); }
         }
 
-        /* Hero Section & Entry Animation */
+        /* HERO SECTION */
         .hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background-color: transparent;
             position: relative;
             z-index: 1;
+            text-align: center;
+        }
+
+        .hero-crown {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 25px;
+            opacity: 0;
+            animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
         }
 
         .hero-title {
-            font-size: 4.2rem;
-            font-weight: 800;
-            letter-spacing: 14px;
+            font-family: 'Cinzel', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 16px;
             text-transform: uppercase;
-            color: #ffffff;
+            background: var(--rolex-gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             opacity: 0;
-            transform: translateY(-50px);
-            animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            text-align: center;
-            filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.4)) drop-shadow(0 0 50px rgba(212, 175, 55, 0.3));
+            transform: translateY(-40px);
+            animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.25));
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: 15px;
+            opacity: 0;
+            animation: dropDown 1.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
         }
 
         @keyframes dropDown {
             0% {
                 opacity: 0;
-                transform: translateY(-60px);
+                transform: translateY(-50px);
             }
             100% {
                 opacity: 1;
@@ -121,85 +157,94 @@
             }
         }
 
-        /* Sections General Styling */
+        /* SECTIONS GENERAL */
         section {
             min-height: 100vh;
-            padding: 100px 10%;
+            padding: 120px 10%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-top: 1px solid var(--border-color);
+            border-top: 1px solid rgba(212, 175, 55, 0.12);
             position: relative;
             z-index: 1;
         }
 
         .section-title {
-            font-size: 2.6rem;
-            font-weight: 800;
-            letter-spacing: 5px;
-            margin-bottom: 50px;
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 6px;
+            margin-bottom: 60px;
             text-transform: uppercase;
             color: #ffffff;
             text-align: center;
             position: relative;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         }
 
         .section-title::after {
             content: '';
             display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--gold-white-gradient);
-            margin: 18px auto 0;
-            border-radius: 3px;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+            width: 70px;
+            height: 2px;
+            background: var(--rolex-gold-gradient);
+            margin: 20px auto 0;
+            border-radius: 2px;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
         }
 
-        /* 1. Biz Kimiz Section (Glassmorphism Effect) */
+        /* 1. BİZ KİMİZ SECTION */
         .about-content {
-            max-width: 850px;
+            max-width: 900px;
             text-align: center;
-            font-size: 1.2rem;
-            line-height: 1.9;
+            font-size: 1.25rem;
+            line-height: 2;
             color: var(--text-secondary);
             font-weight: 300;
             background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            padding: 45px;
-            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 55px;
+            border-radius: 4px;
             border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(212, 175, 55, 0.2);
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--rolex-gold-gradient);
         }
 
         .about-content:hover {
-            border-color: var(--card-hover-border);
-            box-shadow: 0 20px 50px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: var(--rolex-gold);
+            box-shadow: 0 25px 60px var(--green-glow), inset 0 1px 0 rgba(212, 175, 55, 0.4);
         }
 
-        /* 2. Misyon, Vizyon, Projeler Section */
+        /* 2. MİSYON, VİZYON, PROJELER */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 35px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1250px;
         }
 
         .card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            padding: 40px 30px;
-            border-radius: 14px;
+            padding: 45px 35px;
+            border-radius: 4px;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(212, 175, 55, 0.15);
         }
 
         .card::before {
@@ -208,16 +253,16 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: var(--gold-white-gradient);
-            opacity: 0;
+            height: 2px;
+            background: var(--rolex-gold-gradient);
+            opacity: 0.3;
             transition: opacity 0.5s ease;
         }
 
         .card:hover {
-            border-color: var(--card-hover-border);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: var(--rolex-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px var(--gold-glow), inset 0 1px 0 rgba(212, 175, 55, 0.4);
         }
 
         .card:hover::before {
@@ -225,128 +270,136 @@
         }
 
         .card h3 {
-            font-size: 1.25rem;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            color: var(--rolex-gold-light);
         }
 
         .card p {
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 0.98rem;
+            line-height: 1.7;
             font-weight: 300;
         }
 
-        /* 3. Çalışanlar Section */
+        /* 3. EKİBİMİZ */
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1250px;
             justify-content: center;
         }
 
         .team-card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
             padding: 30px;
-            border-radius: 14px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 22px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(212, 175, 55, 0.1);
         }
 
         .team-card:hover {
-            border-color: var(--card-hover-border);
-            transform: translateY(-6px);
-            box-shadow: 0 15px 35px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            border-color: var(--rolex-gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px var(--green-glow), inset 0 1px 0 rgba(212, 175, 55, 0.3);
         }
 
         .avatar {
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            background-color: #1a1c29;
-            border: 2px solid rgba(212, 175, 55, 0.6);
+            background-color: var(--rolex-dark-green);
+            border: 1px solid var(--rolex-gold);
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
-            font-size: 0.8rem;
+            color: var(--rolex-gold-light);
+            font-size: 0.75rem;
+            letter-spacing: 1px;
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
+            box-shadow: 0 0 15px rgba(0, 96, 57, 0.4);
         }
 
         .team-info h4 {
-            font-size: 1.05rem;
-            color: #fff;
-            margin-bottom: 5px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 6px;
             letter-spacing: 1px;
         }
 
         .team-info span {
             display: inline-block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 700;
-            color: #f39c12;
-            background: rgba(243, 156, 18, 0.15);
+            color: var(--rolex-gold-light);
+            background: rgba(0, 96, 57, 0.4);
             padding: 4px 10px;
-            border-radius: 6px;
+            border-radius: 2px;
             margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(243, 156, 18, 0.3);
-            box-shadow: 0 0 10px rgba(243, 156, 18, 0.15);
+            letter-spacing: 1.5px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .team-info p {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--text-secondary);
             font-weight: 300;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        /* 4. Yönetim Section */
+        /* 4. YÖNETİM SECTION */
         .leaders-wrapper {
             display: flex;
             gap: 40px;
             justify-content: center;
             width: 100%;
-            max-width: 900px;
+            max-width: 950px;
             flex-wrap: wrap;
         }
 
         .leader-card {
             background-color: var(--card-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid var(--border-color);
-            padding: 45px 35px;
-            border-radius: 16px;
+            padding: 50px 40px;
+            border-radius: 4px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
             flex: 1;
-            min-width: 300px;
+            min-width: 310px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(212, 175, 55, 0.15);
+        }
+
+        .leader-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 2px;
+            background: var(--rolex-gold-gradient);
         }
 
         .leader-card:hover {
-            border-color: var(--card-hover-border);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 45px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            border-color: var(--rolex-gold);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 45px var(--gold-glow), inset 0 1px 0 rgba(212, 175, 55, 0.35);
         }
 
         .leader-link {
@@ -359,19 +412,19 @@
         }
 
         .leader-avatar {
-            width: 120px;
-            height: 120px;
+            width: 125px;
+            height: 125px;
             border-radius: 50%;
-            background-color: #1a1c29;
-            border: 2px solid #d4af37;
-            margin-bottom: 20px;
+            background-color: var(--rolex-dark-green);
+            border: 2px solid var(--rolex-gold);
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ffffff;
+            color: var(--rolex-gold-light);
             object-fit: cover;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+            transition: transform 0.4s ease;
         }
 
         .leader-link:hover .leader-avatar {
@@ -379,43 +432,43 @@
         }
 
         .leader-card h3 {
-            font-size: 1.35rem;
-            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
             letter-spacing: 2px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             transition: color 0.3s ease;
         }
 
         .leader-link:hover h3 {
-            color: #f39c12;
+            color: var(--rolex-gold-light);
         }
 
         .leader-card .title {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            color: #f39c12;
-            background: rgba(243, 156, 18, 0.15);
-            padding: 5px 14px;
-            border-radius: 20px;
+            color: var(--rolex-gold-light);
+            background: rgba(0, 96, 57, 0.5);
+            padding: 6px 16px;
+            border-radius: 2px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(243, 156, 18, 0.35);
-            box-shadow: 0 0 12px rgba(243, 156, 18, 0.2);
+            margin-bottom: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
         }
 
         .leader-card p {
             color: var(--text-secondary);
-            font-size: 0.92rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.7;
             font-weight: 300;
         }
 
-        /* UZATILMIŞ KAYDIRMA (SCROLL) ANİMASYONU */
+        /* SCROLL REVEAL ANIMATION */
         .reveal {
             opacity: 0;
-            transform: translateY(60px);
-            transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1), transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(50px);
+            transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1), transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
 
@@ -429,8 +482,8 @@
                 grid-template-columns: 1fr;
             }
             .hero-title {
-                font-size: 2.2rem;
-                letter-spacing: 6px;
+                font-size: 2.5rem;
+                letter-spacing: 8px;
             }
         }
     </style>
@@ -444,7 +497,13 @@
 
     <!-- 1. GİRİŞ ANİMASYONU -->
     <section class="hero">
+        <!-- ROLEX CROWN SVG EMBEDDED -->
+        <svg class="hero-crown" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 16L3 5L8.5 10L12 4L15.5 10L21 5L19 16H5Z" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 19H19" stroke="#d4af37" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
         <h1 class="hero-title">Avadeon Yazılım</h1>
+        <p class="hero-subtitle">Mükemmellik &amp; Dijital Gelecek</p>
     </section>
 
     <!-- 2. BİZ KİMİZ -->
@@ -479,7 +538,7 @@
         <h2 class="section-title">Ekibimiz</h2>
         <div class="team-grid">
             <div class="team-card">
-                <div class="avatar">Foto</div>
+                <div class="avatar">FOTO</div>
                 <div class="team-info">
                     <h4>Adnan Mete DAŞÇI</h4>
                     <span>Donanım Ekibi</span>
@@ -487,7 +546,7 @@
                 </div>
             </div>
             <div class="team-card">
-                <div class="avatar">Foto</div>
+                <div class="avatar">FOTO</div>
                 <div class="team-info">
                     <h4>Onur TAŞ</h4>
                     <span>Yazılım Ekibi</span>
@@ -495,7 +554,7 @@
                 </div>
             </div>
             <div class="team-card">
-                <div class="avatar">Foto</div>
+                <div class="avatar">FOTO</div>
                 <div class="team-info">
                     <h4>Mehmet Emin DOĞAN</h4>
                     <span>Yazılım Ekibi</span>
@@ -503,7 +562,7 @@
                 </div>
             </div>
             <div class="team-card">
-                <div class="avatar">Foto</div>
+                <div class="avatar">FOTO</div>
                 <div class="team-info">
                     <h4>Veysel Efe ALKILINÇ</h4>
                     <span>Yazılım Ekibi</span>
@@ -511,7 +570,7 @@
                 </div>
             </div>
             <div class="team-card">
-                <div class="avatar">Foto</div>
+                <div class="avatar">FOTO</div>
                 <div class="team-info">
                     <h4>Duran Enes DAŞCI</h4>
                     <span>Yazılım Ekibi</span>
@@ -521,11 +580,11 @@
         </div>
     </section>
 
-    <!-- 5. YÖNETİM (KURUCU VE BAŞKAN) -->
+    <!-- 5. YÖNETİM -->
     <section class="reveal">
         <h2 class="section-title">Yönetim</h2>
         <div class="leaders-wrapper">
-            <!-- Kurucu (Fotoğraflı ve Linkli) -->
+            <!-- Kurucu -->
             <div class="leader-card">
                 <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
                     <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
@@ -536,7 +595,7 @@
             </div>
             <!-- Başkan -->
             <div class="leader-card">
-                <div class="leader-avatar">Foto</div>
+                <div class="leader-avatar">FOTO</div>
                 <h3>Ahmet Buğra</h3>
                 <div class="title">Başkan</div>
                 <p>Şirket operasyonlarını, genel yönetim stratejilerini ve projelerin hedeflere ulaşmasını idare eden başkanımız.</p>
