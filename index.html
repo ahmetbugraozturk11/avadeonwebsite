@@ -49,7 +49,7 @@
         }
 
         /* ------------------------------------
-           1. HERO SECTION (KOYU ROLEX TEMASI & UZUN SÜRELİ ANİMASYONLAR)
+           1. HERO SECTION (KOYU ROLEX TEMASI)
         ------------------------------------ */
         .hero {
             height: 100vh;
@@ -460,18 +460,43 @@
         }
 
         /* ------------------------------------
-           3. YAVAŞ VE SİNEMATİK AKIŞ ANİMASYONLARI
+           3. DİNAMİK SAĞDAN / SOLDAN / AŞAĞIDAN GELİŞ ANİMASYONLARI
         ------------------------------------ */
-        .reveal {
+        
+        /* Aşağıdan Geliş */
+        .reveal-up {
             opacity: 0;
-            transform: translateY(70px);
-            transition: opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1), transform 2.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(80px);
+            transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
-
-        .reveal.active {
+        .reveal-up.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Soldan Geliş */
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-120px);
+            transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Sağdan Geliş */
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(120px);
+            transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         @keyframes goldFlow {
@@ -489,6 +514,9 @@
             }
             section.white-section {
                 padding: 90px 6%;
+            }
+            .reveal-left, .reveal-right {
+                transform: translateY(50px);
             }
         }
     </style>
@@ -511,38 +539,38 @@
     <!-- BEYAZ BÖLÜMLERİN KAPLAYICISI -->
     <div class="white-wrapper">
 
-        <!-- 2. BİZ KİMİZ -->
-        <section class="white-section reveal">
-            <h2 class="section-title">Biz Kimiz</h2>
-            <div class="about-content">
+        <!-- 2. BİZ KİMİZ (AŞAĞIDAN SÜZÜLEREK GELİR) -->
+        <section class="white-section">
+            <h2 class="section-title reveal-up">Biz Kimiz</h2>
+            <div class="about-content reveal-up">
                 Avadeon Yazılım; temelleri Kahramanmaraş Onikişubat Ticaret ve Sanayi Odası okulunda atılmış, yazılıma meraklı ve dinamik genç bir ekiptir. Lise yıllarında başlayan bu birlikteliğimizi bugün de yeni projeler üreterek, kendimizi sürekli geliştirerek ve faydalı yazılımlar ortaya koyarak sürdürüyoruz.
             </div>
         </section>
 
-        <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
-        <section class="white-section reveal">
-            <h2 class="section-title">Kurumsal Yapı</h2>
+        <!-- 3. MİSYON, VİZYON, PROJELERİMİZ (SOLDAN, AŞAĞIDAN VE SAĞDAN GELİR) -->
+        <section class="white-section">
+            <h2 class="section-title reveal-up">Kurumsal Yapı</h2>
             <div class="grid-3">
-                <div class="card">
+                <div class="card reveal-left">
                     <h3>Misyonumuz</h3>
                     <p>Yerli ve milli yazılım çözümleri üreterek vatanımıza, milletimize ve ülkemizin dijital geleceğine katkı sağlamak; genç ve dinamik ekibimizle faydalı projelere imza atmak.</p>
                 </div>
-                <div class="card">
+                <div class="card reveal-up">
                     <h3>Vizyonumuz</h3>
                     <p>Teknolojiyi önce kendi insanımızın ve kurumlarımızın hizmetine sunmak; dürüst, güvenilir ve sürdürülebilir yazılımlarla ülkemizin teknolojik bağımsızlığına ufak da olsa bir tuğla koyabilmek.</p>
                 </div>
-                <div class="card">
+                <div class="card reveal-right">
                     <h3>Projelerimiz</h3>
                     <p>ETAPMYS, Etkileşimli akıllı tahtaları merkezi olarak yönetmek için geliştirdiğimiz programımız.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 4. EKİBİMİZ (5 KİŞİ) -->
-        <section class="white-section reveal">
-            <h2 class="section-title">Ekibimiz</h2>
+        <!-- 4. EKİBİMİZ (SIRAYLA SOLDAN VE SAĞDAN AKAR) -->
+        <section class="white-section">
+            <h2 class="section-title reveal-up">Ekibimiz</h2>
             <div class="team-grid">
-                <div class="team-card">
+                <div class="team-card reveal-left">
                     <div class="avatar">FOTO</div>
                     <div class="team-info">
                         <h4>Adnan Mete DAŞÇI</h4>
@@ -550,7 +578,7 @@
                         <p>Proje entegrasyonu ve kalite kontrol süreçlerini yürütmektedir.</p>
                     </div>
                 </div>
-                <div class="team-card">
+                <div class="team-card reveal-right">
                     <div class="avatar">FOTO</div>
                     <div class="team-info">
                         <h4>Onur TAŞ</h4>
@@ -558,7 +586,7 @@
                         <p>Arayüz ve kullanıcı deneyimi geliştirme süreçlerini yönetmektedir.</p>
                     </div>
                 </div>
-                <div class="team-card">
+                <div class="team-card reveal-left">
                     <div class="avatar">FOTO</div>
                     <div class="team-info">
                         <h4>Mehmet Emin DOĞAN</h4>
@@ -566,7 +594,7 @@
                         <p>Veritabanı optimizasyonu ve arka plan servisleriyle ilgilenmektedir.</p>
                     </div>
                 </div>
-                <div class="team-card">
+                <div class="team-card reveal-right">
                     <div class="avatar">FOTO</div>
                     <div class="team-info">
                         <h4>Veysel Efe ALKILINÇ</h4>
@@ -574,7 +602,7 @@
                         <p>Güvenlik protokolleri ve sistem performans testlerini yapmaktadır.</p>
                     </div>
                 </div>
-                <div class="team-card">
+                <div class="team-card reveal-up">
                     <div class="avatar">FOTO</div>
                     <div class="team-info">
                         <h4>Duran Enes DAŞCI</h4>
@@ -585,12 +613,12 @@
             </div>
         </section>
 
-        <!-- 5. YÖNETİM -->
-        <section class="white-section reveal">
-            <h2 class="section-title">Yönetim</h2>
+        <!-- 5. YÖNETİM (KURUCU SOLDAN, BAŞKAN SAĞDAN GELİR) -->
+        <section class="white-section">
+            <h2 class="section-title reveal-up">Yönetim</h2>
             <div class="leaders-wrapper">
                 <!-- Kurucu -->
-                <div class="leader-card">
+                <div class="leader-card reveal-left">
                     <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
                         <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
                         <h3>Nuri TIRAŞ</h3>
@@ -599,7 +627,7 @@
                     <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucumuz.</p>
                 </div>
                 <!-- Başkan -->
-                <div class="leader-card">
+                <div class="leader-card reveal-right">
                     <div class="leader-avatar">FOTO</div>
                     <h3>Ahmet Buğra</h3>
                     <div class="title">Başkan</div>
@@ -610,23 +638,25 @@
 
     </div>
 
-    <!-- KAYDIRMA ANİMASYON SCRIPT KODU -->
+    <!-- TEKRARLAYAN KAYDIRMA ANİMASYON SCRIPT KODU -->
     <script>
-        const reveals = document.querySelectorAll('.reveal');
+        const animatedElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Ekran sınırına girince animasyonu başlat
                     entry.target.classList.add('active');
+                } else {
+                    // Ekrandan çıkınca sıfırla (Böylece tekrar yukarı çıkıp inince animasyon yeniden oynar)
+                    entry.target.classList.remove('active');
                 }
             });
         }, {
             threshold: 0.15
         });
 
-        reveals.forEach(reveal => {
-            observer.observe(reveal);
-        });
+        animatedElements.forEach(el => observer.observe(el));
     </script>
 
 </body>
