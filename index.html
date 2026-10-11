@@ -49,7 +49,111 @@
         }
 
         /* ------------------------------------
-            1. HERO SECTION (ESKİ CANLI VE DERİN YEŞİL EFEKT)
+            SOL KENAR EFEKTLİ AÇILIR MENÜ
+        ------------------------------------ */
+        .sidebar-trigger-zone {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 100vh;
+            z-index: 9998;
+        }
+
+        .left-menu-tab {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 90px;
+            background: var(--rolex-gold);
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 0 20px var(--rolex-gold);
+            z-index: 9999;
+            cursor: pointer;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sidebar-trigger-zone:hover ~ .left-menu-tab,
+        .left-menu-tab:hover {
+            width: 14px;
+        }
+
+        .left-sidebar {
+            position: fixed;
+            left: -320px;
+            top: 0;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #060807 0%, #002b19 100%);
+            border-right: 3px solid var(--rolex-gold);
+            box-shadow: 15px 0 50px rgba(0, 0, 0, 0.85);
+            transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            padding: 50px 30px;
+        }
+
+        .sidebar-trigger-zone:hover ~ .left-sidebar,
+        .left-menu-tab:hover ~ .left-sidebar,
+        .left-sidebar:hover {
+            left: 0;
+        }
+
+        .sidebar-header {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: var(--rolex-gold);
+            letter-spacing: 3px;
+            margin-bottom: 45px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-link {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 2px;
+            padding: 14px 20px;
+            border-radius: 6px;
+            background: rgba(0, 96, 57, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .sidebar-link:hover {
+            background: var(--rolex-green);
+            border-color: var(--rolex-gold);
+            color: var(--rolex-gold-light);
+            transform: translateX(8px);
+            box-shadow: 0 5px 20px rgba(0, 96, 57, 0.4);
+        }
+
+        /* ------------------------------------
+            GÖRÜNÜM KONTROLÜ (SPA SWITCHER)
+        ------------------------------------ */
+        .view-section {
+            display: none;
+        }
+        .view-section.active-view {
+            display: block;
+        }
+
+        /* ------------------------------------
+            1. HERO SECTION
         ------------------------------------ */
         .hero {
             height: 100vh;
@@ -69,7 +173,7 @@
             position: absolute;
             width: 650px;
             height: 650px;
-            background: rgba(0, 96, 57, 0.4); /* Eski canlı ve net yeşil parlaklık */
+            background: rgba(0, 96, 57, 0.4);
             filter: blur(140px);
             border-radius: 50%;
             pointer-events: none;
@@ -81,7 +185,6 @@
             100% { transform: scale(1.2) translate(20px, 20px); opacity: 0.9; }
         }
 
-        /* YUVARLAK LOGO STİLİ */
         .hero-logo {
             width: 100px;
             height: 100px;
@@ -218,7 +321,7 @@
             border-color: var(--rolex-gold);
         }
 
-        /* KURUMSAL YAPISI (MİSYON, VİZYON, PROJELER) */
+        /* KURUMSAL YAPISI */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -464,7 +567,88 @@
         }
 
         /* ------------------------------------
-            3. FOOTER (ALT BİLGİ & İLETİŞİM)
+            ETAPMYS ÖZEL SAYFA STİLLERİ
+        ------------------------------------ */
+        .etapmys-container {
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #003822 0%, #060807 80%);
+            padding: 100px 8%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .etapmys-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .etapmys-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: 12px;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .etapmys-desc {
+            font-size: 1.15rem;
+            color: #d2deda;
+            max-width: 800px;
+            line-height: 1.8;
+            letter-spacing: 1px;
+        }
+
+        .video-box {
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(0, 43, 25, 0.6);
+            border: 2px solid var(--rolex-gold);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.25);
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-box video {
+            width: 100%;
+            border-radius: 8px;
+            display: block;
+            outline: none;
+            background: #000;
+        }
+
+        .back-btn {
+            font-family: 'Cinzel', serif;
+            background: var(--gold-gradient);
+            color: var(--rolex-black);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.7);
+            background: #ffffff;
+        }
+
+        /* ------------------------------------
+            3. FOOTER
         ------------------------------------ */
         .footer {
             background-color: var(--rolex-black);
@@ -515,13 +699,12 @@
         }
 
         /* ------------------------------------
-            4. DİNAMİK SAĞDAN / SOLDAN / AŞAĞIDAN GELİŞ ANİMASYONLARI
+            ANİMASYON SINIFLARI
         ------------------------------------ */
         .reveal-up {
             opacity: 0;
             transform: translateY(80px);
             transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
         }
         .reveal-up.active {
             opacity: 1;
@@ -532,7 +715,6 @@
             opacity: 0;
             transform: translateX(-120px);
             transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
         }
         .reveal-left.active {
             opacity: 1;
@@ -543,7 +725,6 @@
             opacity: 0;
             transform: translateX(120px);
             transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
         }
         .reveal-right.active {
             opacity: 1;
@@ -566,9 +747,6 @@
             section.white-section {
                 padding: 90px 6%;
             }
-            .reveal-left, .reveal-right {
-                transform: translateY(50px);
-            }
             .footer-contact {
                 flex-direction: column;
                 gap: 15px;
@@ -578,131 +756,174 @@
 </head>
 <body>
 
-    <!-- 1. GİRİŞ ANİMASYONU (EFSANE ROLEX CANLI TEMASI) -->
-    <section class="hero">
-        <div class="glow-orb-hero"></div>
-        
-        <!-- YUVARLAK LOGO -->
-        <img src="yenilogo.png" alt="Avadeon Yazılım Logo" class="hero-logo">
-        
-        <h1 class="hero-title">Avadeon Yazılım</h1>
-        <p class="hero-subtitle">Genç &amp; Dinamik</p>
-    </section>
+    <!-- SOL KENAR MENÜ TETİKLEYİCİLERİ VE MENÜ -->
+    <div class="sidebar-trigger-zone"></div>
+    <div class="left-menu-tab"></div>
+    <nav class="left-sidebar">
+        <div class="sidebar-header">Menü</div>
+        <div class="sidebar-links">
+            <button class="sidebar-link" onclick="switchView('etapmys')">ETAPMYS</button>
+        </div>
+    </nav>
 
-    <!-- BEYAZ BÖLÜMLERİN KAPLAYICISI -->
-    <div class="white-wrapper">
-
-        <!-- 2. BİZ KİMİZ -->
-        <section class="white-section">
-            <h2 class="section-title reveal-up">Biz Kimiz</h2>
-            <div class="about-content reveal-up">
-                Avadeon Yazılım; temelleri Kahramanmaraş Onikişubat Ticaret ve Sanayi Odası okulunda atılmış, yazılıma meraklı ve dinamik genç bir ekiptir. Lise yıllarında başlayan bu birlikteliğimizi bugün de yeni projeler üreterek, kendimizi sürekli geliştirerek ve faydalı yazılımlar ortaya koyarak sürdürüyoruz.
-            </div>
+    <!-- ANA SAYFA GÖRÜNÜMÜ -->
+    <div id="home-view" class="view-section active-view">
+        <!-- 1. GİRİŞ ANİMASYONU -->
+        <section class="hero">
+            <div class="glow-orb-hero"></div>
+            <img src="yenilogo.png" alt="Avadeon Yazılım Logo" class="hero-logo">
+            <h1 class="hero-title">Avadeon Yazılım</h1>
+            <p class="hero-subtitle">Genç &amp; Dinamik</p>
         </section>
 
-        <!-- 3. MİSYON, VİZYON, PROJELERİMİZ -->
-        <section class="white-section">
-            <h2 class="section-title reveal-up">Kurumsal Yapı</h2>
-            <div class="grid-3">
-                <div class="card reveal-left">
-                    <h3>Misyonumuz</h3>
-                    <p>Yerli ve milli yazılım çözümleri üreterek vatanımıza, milletimize ve ülkemizin dijital geleceğine katkı sağlamak; genç ve dinamik ekibimizle faydalı projelere imza atmak.</p>
+        <!-- BEYAZ BÖLÜMLERİN KAPLAYICISI -->
+        <div class="white-wrapper">
+            <!-- 2. BİZ KİMİZ -->
+            <section class="white-section">
+                <h2 class="section-title reveal-up">Biz Kimiz</h2>
+                <div class="about-content reveal-up">
+                    Avadeon Yazılım; temelleri Kahramanmaraş Onikişubat Ticaret ve Sanayi Odası okulunda atılmış, yazılıma meraklı ve dinamik genç bir ekiptir. Lise yıllarında başlayan bu birlikteliğimizi bugün de yeni projeler üreterek, kendimizi sürekli geliştirerek ve faydalı yazılımlar ortaya koyarak sürdürüyoruz.
                 </div>
-                <div class="card reveal-up">
-                    <h3>Vizyonumuz</h3>
-                    <p>Teknolojiyi önce kendi insanımızın ve kurumlarımızın hizmetine sunmak; dürüst, güvenilir ve sürdürülebilir yazılımlarla ülkemizin teknolojik bağımsızlığına ufak da olsa bir tuğla koyabilmek.</p>
-                </div>
-                <div class="card reveal-right">
-                    <h3>Projelerimiz</h3>
-                    <p>ETAPMYS, Etkileşimli akıllı tahtaları merkezi olarak yönetmek için geliştirdiğimiz programımız.</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 4. EKİBİMİZ -->
-        <section class="white-section">
-            <h2 class="section-title reveal-up">Ekibimiz</h2>
-            <div class="team-grid">
-                <div class="team-card reveal-left">
-                    <div class="avatar">FOTO</div>
-                    <div class="team-info">
-                        <h4>Adnan Mete DAŞÇI</h4>
-                        <span>Donanım Ekibi</span>
-                        <p>Proje entegrasyonu ve kalite kontrol süreçlerini yürütmektedir.</p>
+            <!-- 3. KURUMSAL YAPI -->
+            <section class="white-section">
+                <h2 class="section-title reveal-up">Kurumsal Yapı</h2>
+                <div class="grid-3">
+                    <div class="card reveal-left">
+                        <h3>Misyonumuz</h3>
+                        <p>Yerli ve milli yazılım çözümleri üreterek vatanımıza, milletimize ve ülkemizin dijital geleceğine katkı sağlamak; genç ve dinamik ekibimizle faydalı projelere imza atmak.</p>
+                    </div>
+                    <div class="card reveal-up">
+                        <h3>Vizyonumuz</h3>
+                        <p>Teknolojiyi önce kendi insanımızın ve kurumlarımızın hizmetine sunmak; dürüst, güvenilir ve sürdürülebilir yazılımlarla ülkemizin teknolojik bağımsızlığına ufak da olsa bir tuğla koyabilmek.</p>
+                    </div>
+                    <div class="card reveal-right">
+                        <h3>Projelerimiz</h3>
+                        <p>ETAPMYS, Etkileşimli akıllı tahtaları merkezi olarak yönetmek için geliştirdiğimiz programımız.</p>
                     </div>
                 </div>
-                <div class="team-card reveal-right">
-                    <div class="avatar">FOTO</div>
-                    <div class="team-info">
-                        <h4>Onur TAŞ</h4>
-                        <span>Yazılım Ekibi</span>
-                        <p>Arayüz ve kullanıcı deneyimi geliştirme süreçlerini yönetmektedir.</p>
-                    </div>
-                </div>
-                <div class="team-card reveal-left">
-                    <div class="avatar">FOTO</div>
-                    <div class="team-info">
-                        <h4>Mehmet Emin DOĞAN</h4>
-                        <span>Editör</span>
-                        <p>Tanıtım reklam videolarımızın montajları ile ilgilenmektedir.</p>
-                    </div>
-                </div>
-                <div class="team-card reveal-right">
-                    <div class="avatar">FOTO</div>
-                    <div class="team-info">
-                        <h4>Veysel Efe ALKILINÇ</h4>
-                        <span>Güvenlik Mühendisi</span>
-                        <p>Güvenlik protokolleri ve sistem performans testlerini yapmaktadır.</p>
-                    </div>
-                </div>
-                <div class="team-card reveal-up">
-                    <div class="avatar">FOTO</div>
-                    <div class="team-info">
-                        <h4>Duran Enes DAŞCI</h4>
-                        <span>Teknik Destek</span>
-                        <p>Fiziksel sunucularımız ve ekipmanlarımızın tamirini üstlenmektedir.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- 5. YÖNETİM -->
-        <section class="white-section">
-            <h2 class="section-title reveal-up">Yönetim</h2>
-            <div class="leaders-wrapper">
-                <!-- Kurucu -->
-                <div class="leader-card reveal-left">
-                    <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
-                        <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
-                        <h3>Nuri TIRAŞ</h3>
-                    </a>
-                    <div class="title">Kurucu</div>
-                    <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucumuz.</p>
+            <!-- 4. EKİBİMİZ -->
+            <section class="white-section">
+                <h2 class="section-title reveal-up">Ekibimiz</h2>
+                <div class="team-grid">
+                    <div class="team-card reveal-left">
+                        <div class="avatar">FOTO</div>
+                        <div class="team-info">
+                            <h4>Adnan Mete DAŞÇI</h4>
+                            <span>Donanım Ekibi</span>
+                            <p>Proje entegrasyonu ve kalite kontrol süreçlerini yürütmektedir.</p>
+                        </div>
+                    </div>
+                    <div class="team-card reveal-right">
+                        <div class="avatar">FOTO</div>
+                        <div class="team-info">
+                            <h4>Onur TAŞ</h4>
+                            <span>Yazılım Ekibi</span>
+                            <p>Arayüz ve kullanıcı deneyimi geliştirme süreçlerini yönetmektedir.</p>
+                        </div>
+                    </div>
+                    <div class="team-card reveal-left">
+                        <div class="avatar">FOTO</div>
+                        <div class="team-info">
+                            <h4>Mehmet Emin DOĞAN</h4>
+                            <span>Editör</span>
+                            <p>Tanıtım reklam videolarımızın montajları ile ilgilenmektedir.</p>
+                        </div>
+                    </div>
+                    <div class="team-card reveal-right">
+                        <div class="avatar">FOTO</div>
+                        <div class="team-info">
+                            <h4>Veysel Efe ALKILINÇ</h4>
+                            <span>Güvenlik Mühendisi</span>
+                            <p>Güvenlik protokolleri ve sistem performans testlerini yapmaktadır.</p>
+                        </div>
+                    </div>
+                    <div class="team-card reveal-up">
+                        <div class="avatar">FOTO</div>
+                        <div class="team-info">
+                            <h4>Duran Enes DAŞCI</h4>
+                            <span>Teknik Destek</span>
+                            <p>Fiziksel sunucularımız ve ekipmanlarımızın tamirini üstlenmektedir.</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Başkan -->
-                <div class="leader-card reveal-right">
-                    <div class="leader-avatar">FOTO</div>
-                    <h3>Ahmet Buğra ÖZTÜRK</h3>
-                    <div class="title">Başkan</div>
-                    <p>Operasyonları, genel yönetim stratejilerini ve projelerin hedeflere ulaşmasını idare eden başkanımız.</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
+            <!-- 5. YÖNETİM -->
+            <section class="white-section">
+                <h2 class="section-title reveal-up">Yönetim</h2>
+                <div class="leaders-wrapper">
+                    <div class="leader-card reveal-left">
+                        <a href="https://nuritiras.com.tr" target="_blank" class="leader-link">
+                            <img src="nurihoca.jpg" alt="Nuri TIRAŞ" class="leader-avatar">
+                            <h3>Nuri TIRAŞ</h3>
+                        </a>
+                        <div class="title">Kurucu</div>
+                        <p>Avadeon Yazılım'ın temelini atan, stratejik büyüme ve teknolojik vizyona yön veren kurucumuz.</p>
+                    </div>
+                    <div class="leader-card reveal-right">
+                        <div class="leader-avatar">FOTO</div>
+                        <h3>Ahmet Buğra ÖZTÜRK</h3>
+                        <div class="title">Başkan</div>
+                        <p>Operasyonları, genel yönetim stratejilerini ve projelerin hedeflere ulaşmasını idare eden başkanımız.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 6. FOOTER -->
+        <footer class="footer reveal-up">
+            <h3>Avadeon Yazılım</h3>
+            <div class="footer-contact">
+                <span>E-posta: <a href="mailto:ahmetbugraozturk11@gmail.com">ahmetbugraozturk11@gmail.com</a></span>
+                <span>Telefon: <a href="tel:05521726416">0552 172 64 16</a></span>
+            </div>
+            <p class="footer-copy">&copy; 2026 Avadeon Yazılım. Tüm hakları saklıdır.</p>
+        </footer>
     </div>
 
-    <!-- 6. FOOTER (İLETİŞİM VE TELİF HAKLARI) -->
-    <footer class="footer reveal-up">
-        <h3>Avadeon Yazılım</h3>
-        <div class="footer-contact">
-            <span>E-posta: <a href="mailto:ahmetbugraozturk11@gmail.com">ahmetbugraozturk11@gmail.com</a></span>
-            <span>Telefon: <a href="tel:05521726416">0552 172 64 16</a></span>
-        </div>
-        <p class="footer-copy">&copy; 2026 Avadeon Yazılım. Tüm hakları saklıdır.</p>
-    </footer>
+    <!-- ETAPMYS SAYFASI (AYNI DOSYADA ÖZEL GÖRÜNÜM) -->
+    <div id="etapmys-view" class="view-section">
+        <div class="etapmys-container">
+            <div class="etapmys-header">
+                <h1 class="etapmys-title">ETAPMYS</h1>
+                <p class="etapmys-desc">Etkileşimli Akıllı Tahta Yönetim Sistemi; sınıflardaki akıllı tahtalarınızı uzaktan merkezi olarak yönetmenize, güvenlik protokollerini uygulamanıza ve multimedya içeriklerini kolayca dağıtmanıza olanak tanıyan profesyonel yazılım çözümümüzdür.</p>
+            </div>
 
-    <!-- TEKRARLAYAN KAYDIRMA ANİMASYON SCRIPT KODU -->
+            <!-- VİDEO OYNATMA ALANI (Dosyanın adını etapmysvideo.mp4 yapman yeterli) -->
+            <div class="video-box">
+                <video controls>
+                    <source src="etapmysvideo.mp4" type="video/mp4">
+                    Tarayıcınız video etiketini desteklemiyor. Lütfen videoyu <strong>etapmysvideo.mp4</strong> adıyla aynı dizine ekleyin.
+                </video>
+            </div>
+
+            <button class="back-btn" onclick="switchView('home')">Ana Sayfaya Dön</button>
+        </div>
+    </div>
+
+    <!-- ANİMASYON VE SAYFA GEÇİŞ SCRIPTLERİ -->
     <script>
+        // Sayfa / Görünüm Değiştirme Fonksiyonu
+        function switchView(viewName) {
+            const homeView = document.getElementById('home-view');
+            const etapmysView = document.getElementById('etapmys-view');
+
+            if (viewName === 'etapmys') {
+                homeView.classList.remove('active-view');
+                etapmysView.classList.add('active-view');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                etapmysView.classList.remove('active-view');
+                homeView.classList.add('active-view');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Kaydırma Animasyonları (Intersection Observer)
         const animatedElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
         const observer = new IntersectionObserver((entries) => {
