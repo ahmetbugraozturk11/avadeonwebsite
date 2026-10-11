@@ -676,43 +676,111 @@
             background: var(--bg-soft-grey);
             border: 1px solid var(--border-grey);
             border-left: 4px solid var(--rolex-gold);
-            padding: 50px 60px;
+            padding: 60px;
             border-radius: 10px;
             max-width: 1000px;
             width: 100%;
-            text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
             margin-bottom: 50px;
         }
 
-        .etapmys-title {
+        .etapmys-main-title {
             font-family: 'Cinzel', serif;
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            letter-spacing: 8px;
+            letter-spacing: 4px;
             color: var(--text-dark);
-            margin-bottom: 24px;
+            margin-bottom: 40px;
             text-transform: uppercase;
+            text-align: center;
             position: relative;
-            display: inline-block;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
         }
 
-        .etapmys-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: var(--gold-gradient);
-            margin: 15px auto 0;
-            border-radius: 2px;
+        .etapmys-section-block {
+            margin-bottom: 35px;
         }
 
-        .etapmys-desc {
-            font-size: 1.15rem;
+        .etapmys-section-block h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--rolex-dark-green);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .etapmys-section-block ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .etapmys-section-block li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 10px;
             color: var(--text-muted);
-            line-height: 2;
-            letter-spacing: 0.5px;
-            font-weight: 400;
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .etapmys-section-block li::before {
+            content: '▪';
+            position: absolute;
+            left: 0;
+            color: var(--rolex-gold);
+            font-size: 0.9rem;
+        }
+
+        /* SATIN ALMA VE DETAYLAR KARTI */
+        .purchase-box {
+            background: #ffffff;
+            border: 1px solid var(--border-grey);
+            border-top: 4px solid var(--rolex-gold);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+        }
+
+        .purchase-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .purchase-box p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .purchase-box a {
+            color: var(--rolex-dark-green);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .purchase-box a:hover {
+            color: var(--rolex-gold-dark);
+            text-decoration: underline;
+        }
+
+        .bank-details {
+            background: var(--bg-soft-grey);
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid var(--border-grey);
+            margin: 15px 0;
+            font-family: monospace;
+            font-size: 0.95rem;
+            color: var(--text-dark);
         }
 
         /* BUTON KISMI */
@@ -842,8 +910,8 @@
             .etapmys-info-card {
                 padding: 30px 20px;
             }
-            .etapmys-title {
-                font-size: 2.2rem;
+            .etapmys-main-title {
+                font-size: 1.8rem;
             }
             .footer-contact {
                 flex-direction: column;
@@ -1003,10 +1071,154 @@
                 </video>
             </div>
 
-            <!-- 2. ALT KISIMDA AÇIKLAMA KARTI -->
+            <!-- 2. ALT KISIMDA AÇIKLAMA VE İŞLEMLER KARTI -->
             <div class="etapmys-info-card">
-                <h1 class="etapmys-title">ETAPMYS</h1>
-                <p class="etapmys-desc">Etkileşimli Akıllı Tahta Yönetim Sistemi; eğitim kurumlarındaki akıllı tahtaları uzaktan ve merkezi olarak yönetmenize, güvenlik politikalarını anlık uygulamanıza, uzaktan içerik paylaşmanıza ve sistem performansını takip etmenize olanak sağlayan yerli ve milli yazılım çözümümüzdür.</p>
+                <h1 class="etapmys-main-title">ETAP MYS PROGRAMI İLE YAPILABİLECEK İŞLEMLER</h1>
+                
+                <div class="etapmys-section-block">
+                    <h3>1. Merkezi Ağ Yönetimi ve Cihaz Takibi</h3>
+                    <ul>
+                        <li>Tüm akıllı tahta ve laboratuvar bilgisayarlarının tek merkezden izlenmesi sağlanır.</li>
+                        <li>Ağ taraması ile cihazlar otomatik olarak tespit edilerek manuel arama ihtiyacı ortadan kaldırılır.</li>
+                        <li>Cihazların açık/kapalı durumları anlık olarak görüntülenir ve hızlı müdahale imkânı sunulur.</li>
+                        <li>Toplu seçim araçları sayesinde çok sayıda cihaz üzerinde tek işlemle yönetim yapılır.</li>
+                        <li>Cihaz isimlendirme işlemleri merkezi olarak gerçekleştirilerek ağ düzeni standartlaştırılır.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>2. Güç Yönetimi ve Uzaktan Kontrol</h3>
+                    <ul>
+                        <li>Tüm cihazlar merkezi olarak kapatılabilir ve yeniden başlatılabilir.</li>
+                        <li>Sistem güncellemeleri uzaktan ve toplu şekilde gerçekleştirilebilir.</li>
+                        <li>Wake-on-LAN özelliği ile kapalı cihazlar fiziksel müdahale olmadan açılabilir.</li>
+                        <li>Oturum kilitleme işlemleri merkezi olarak uygulanarak sınıf kontrolü sağlanır.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>3. Uzaktan Erişim ve Teknik Müdahale</h3>
+                    <ul>
+                        <li>VNC altyapısı ile cihazlara uzaktan bağlanılarak ekran kontrolü sağlanır.</li>
+                        <li>Teknik sorunlara yerinde müdahale gerekmeksizin anlık çözüm üretilebilir.</li>
+                        <li>Uzaktan erişim sırasında kullanıcı etkileşimi sınırlandırılarak güvenli kontrol sağlanır.</li>
+                        <li>VNC servisleri merkezi olarak yönetilerek ek yazılım ihtiyacı azaltılır.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>4. Dosya Yönetimi ve İçerik Dağıtımı</h3>
+                    <ul>
+                        <li>Ders materyalleri ve dosyalar tüm cihazlara eş zamanlı olarak gönderilebilir.</li>
+                        <li>USB bellek kullanımına ihtiyaç duyulmadan hızlı veri aktarımı sağlanır.</li>
+                        <li>Dosyalar hedef cihazlarda ilgili dizinlere otomatik olarak yerleştirilir.</li>
+                        <li>Toplu dağıtım sayesinde içerik paylaşımı standardize edilir.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>5. Ekran Yönetimi ve Sınıf Kontrolü</h3>
+                    <ul>
+                        <li>Cihazların masaüstü arka planları merkezi olarak değiştirilebilir.</li>
+                        <li>Ekran kilitleme işlemleri ile kullanıcı erişimi geçici olarak sınırlandırılabilir.</li>
+                        <li>Kilit açma işlemleri merkezi olarak gerçekleştirilerek kontrol sağlanır.</li>
+                        <li>Sınıf içi dikkat yönetimi ve disiplin artırılır.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>6. Anlık Mesajlaşma ve Duyuru Sistemi</h3>
+                    <ul>
+                        <li>Tüm cihazlara eş zamanlı duyuru gönderilebilir.</li>
+                        <li>Kullanıcılardan geri bildirim alınmasına imkân tanıyan mesajlaşma sistemi kullanılabilir.</li>
+                        <li>Gelen yanıtlar merkezi olarak toplanarak analiz edilebilir.</li>
+                        <li>Acil bilgilendirme süreçleri hızlı ve etkin şekilde yürütülür.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>7. Kullanıcı Yönetimi ve Profil Dağıtımı</h3>
+                    <ul>
+                        <li>Tüm kullanıcı hesapları merkezi olarak oluşturulabilir ve yönetilebilir.</li>
+                        <li>Şifre değiştirme işlemleri toplu şekilde gerçekleştirilebilir.</li>
+                        <li>Yeni kullanıcılar tüm cihazlara eş zamanlı olarak eklenebilir.</li>
+                        <li>Kullanıcı silme ve veri temizleme işlemleri merkezi olarak uygulanabilir.</li>
+                        <li>Kullanıcı profilleri diğer cihazlara kopyalanarak standart yapı oluşturulabilir.</li>
+                        <li>Sistem temizleme işlemleri ile cihaz performansı artırılabilir.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>8. PIN (OTP) Yönetimi ve Güvenli Giriş</h3>
+                    <ul>
+                        <li>PIN bilgileri merkezi olarak alınabilir ve diğer cihazlara dağıtılabilir.</li>
+                        <li>Güvenli giriş altyapısı tüm cihazlarda hızlı şekilde uygulanabilir.</li>
+                        <li>Mevcut kullanıcı verileri korunarak yeni kayıtlar sisteme entegre edilir.</li>
+                        <li>Yeni kullanıcıların sisteme adaptasyonu hızlandırılır.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>9. Toplu Yazılım Kurulumu</h3>
+                    <ul>
+                        <li>Yazılımlar tüm cihazlara tek işlemle kurulabilir.</li>
+                        <li>Farklı paket türleri (.deb, .AppImage, .run) desteklenir.</li>
+                        <li>Kurulum işlemleri arka planda gerçekleştirilerek ders akışı kesintiye uğratılmaz.</li>
+                        <li>Bağımlılık yönetimi otomatik yapılır ve hata riski azaltılır.</li>
+                        <li>Kurulum süreçleri log kayıtları ile izlenebilir.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>10. Toplu Yazılım Kaldırma</h3>
+                    <ul>
+                        <li>Gereksiz veya eski yazılımlar merkezi olarak kaldırılabilir.</li>
+                        <li>Depolama alanı ve sistem performansı iyileştirilir.</li>
+                        <li>Yazılım yönetimi standardize edilir.</li>
+                        <li>İşlem sonuçları log sistemi üzerinden takip edilebilir.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>11. Zamanlama ve Otomasyon</h3>
+                    <ul>
+                        <li>Cihazlar belirlenen saatlerde otomatik olarak kilitlenebilir.</li>
+                        <li>Okul çıkışında cihazların otomatik kapanması sağlanabilir.</li>
+                        <li>Haftalık zaman planları tek merkezden tüm cihazlara uygulanabilir.</li>
+                        <li>Sistem, yönetici müdahalesi olmadan otomatik çalışmaya devam eder.</li>
+                    </ul>
+                </div>
+
+                <div class="etapmys-section-block">
+                    <h3>12. Toplu Komut Çalıştırma</h3>
+                    <ul>
+                        <li>Tüm cihazlara aynı anda terminal komutları gönderilebilir.</li>
+                        <li>Sistem güncelleme ve bakım işlemleri merkezi olarak yapılabilir.</li>
+                        <li>Pardus’un kendi SSH bağlantısını kullanarak toplu işlem uygulanır.</li>
+                        <li>Komut çıktıları merkezi ekranda görüntülenerek hızlı analiz yapılır.</li>
+                    </ul>
+                </div>
+
+                <!-- SATIN ALMA VE İLETİŞİM BİLGİLERİ -->
+                <div class="purchase-box">
+                    <h3>Satın Alma</h3>
+                    <p><strong>Yıllık Lisans Ücreti:</strong> 4000+KDV</p>
+                    
+                    <p style="margin-top: 15px;"><strong>Hesap Bilgileri:</strong></p>
+                    <div class="bank-details">
+                        Kahramanmaraş/Onikişubat/Ticaret ve Sanayi Odası Mesleki ve Teknik Lisesi Döner Sermaye İşletmesi<br>
+                        TR0800 0100 1948 9606 8699 5002
+                    </div>
+
+                    <p><strong>İletişim İçin:</strong> <a href="mailto:ktsomtal@gmail.com">ktsomtal@gmail.com</a></p>
+                    
+                    <p style="margin-top: 15px;"><strong>Kurulum Dosyaları:</strong></p>
+                    <p>• Pardus : <a href="https://drive.google.com/file/d/1rMvy0R7LcTGZvBoaCkUvkrgBAF4dMUTd/view?usp=sharing" target="_blank">İndirmek İçin Tıklayın</a></p>
+                    <p>• Windows : <a href="https://drive.google.com/file/d/148MmzszVhKCFwZbP4HVI8xZKVe_BncmH/view" target="_blank">İndirmek İçin Tıklayın</a></p>
+                    
+                    <p style="margin-top: 15px;"><strong>Uygulama Kılavuzu:</strong> <a href="meb_iys_dosyalar/46/01/964621/dosyalar/2026_04/69f06d7a21940819341787_ETAPMYS.pdf" target="_blank">PDF Kılavuzunu Görüntüle</a></p>
+                    <p><strong>Uygulama Videoları:</strong> <a href="https://www.youtube.com/@bilisim46" target="_blank">YouTube Kanalı (@bilisim46)</a></p>
+                </div>
             </div>
 
             <!-- 3. ANA SAYFAYA DÖNÜŞ BUTONU -->
