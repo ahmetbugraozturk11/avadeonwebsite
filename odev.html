@@ -1,20 +1,261 @@
-<script>
-    // Klavyeden sırasıyla "ö", "d", "e", "v" harflerine basıldığını takip eder
-    let typedBuffer = "";
-    const targetWord = "ödev";
-
-    window.addEventListener("keydown", (e) => {
-        typedBuffer += e.key.toLowerCase();
-        
-        // Eğer yanlış harfe basılırsa tamponu temizle veya son kelimeye odaklan
-        if (!targetWord.startsWith(typedBuffer)) {
-            typedBuffer = e.key.toLowerCase() === 'ö' ? 'ö' : '';
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinema Bilet Sistemi</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-
-        // "ödev" kelimesi tamamlandığında odev.html sayfasına yönlendirir
-        if (typedBuffer === targetWord) {
-            window.location.href = "odev.html";
-            typedBuffer = "";
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            user-select: none;
         }
-    });
-</script>
+        .win-window {
+            background-color: #ece9d8;
+            border: 2px solid #0055ea;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            overflow: hidden;
+        }
+        .win-titlebar {
+            background: linear-gradient(to right, #0055ea, #1e90ff);
+            color: white;
+            padding: 6px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            font-weight: bold;
+        }
+        .win-title-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .win-icon {
+            width: 12px;
+            height: 12px;
+            background-color: #70a9ff;
+            border: 1px solid white;
+        }
+        .win-controls {
+            display: flex;
+            gap: 2px;
+        }
+        .win-btn-control {
+            width: 20px;
+            height: 20px;
+            background-color: #ece9d8;
+            color: black;
+            border: 1px solid #7f9db9;
+            font-size: 11px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .win-btn-control:hover {
+            background-color: #e81123;
+            color: white;
+            border-color: #e81123;
+        }
+        .win-body {
+            padding: 15px;
+            font-size: 12px;
+            color: black;
+        }
+        .main-title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .win-fieldset {
+            border: 1px solid #aca899;
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #ece9d8;
+        }
+        .win-legend {
+            font-size: 12px;
+            font-weight: bold;
+            padding: 0 4px;
+            color: #000;
+        }
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .form-row label, .form-row .label-text {
+            width: 90px;
+            font-weight: 500;
+        }
+        .win-input, .win-select {
+            background-color: white;
+            border: 1px solid #7f9db9;
+            padding: 3px 6px;
+            font-size: 12px;
+            font-family: inherit;
+            outline: none;
+            flex: 1;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .radio-group label, .checkbox-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .win-action-btn {
+            background-color: #ece9d8;
+            border: 1px solid #7f9db9;
+            padding: 5px 25px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: inset 1px 1px 0px white, inset -1px -1px 0px #dfdfdf;
+        }
+        .win-action-btn:active {
+            background-color: #d4d0c8;
+            box-shadow: inset 1px 1px 0px #dfdfdf, inset -1px -1px 0px white;
+        }
+        textarea.win-input {
+            resize: none;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="win-window">
+        <!-- Başlık Çubuğu -->
+        <div class="win-titlebar">
+            <div class="win-title-left">
+                <div class="win-icon"></div>
+                <span>Sinema Bilet Sistemi</span>
+            </div>
+            <div class="win-controls">
+                <a href="#" class="win-btn-control">_</a>
+                <a href="#" class="win-btn-control">□</a>
+                <a href="index.html" class="win-btn-control">✕</a>
+            </div>
+        </div>
+
+        <!-- İçerik -->
+        <div class="win-body">
+            <div class="main-title">SİNEMA BİLET SİSTEMİ</div>
+
+            <!-- Film ve Seans -->
+            <fieldset class="win-fieldset">
+                <legend class="win-legend">Film ve Seans Bilgileri</legend>
+                
+                <div class="form-row">
+                    <span class="label-text">Film</span>
+                    <select class="win-select">
+                        <option>Avatar 3</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <span class="label-text">Salon</span>
+                    <select class="win-select">
+                        <option>Salon 1</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <span class="label-text">Tarih</span>
+                    <input type="text" class="win-input" value="15.10.2026">
+                    <span class="win-action-btn" style="padding: 2px 8px; margin-left: 4px;">📅</span>
+                </div>
+                <div class="form-row" style="margin-bottom: 0;">
+                    <span class="label-text">Seans</span>
+                    <div class="radio-group">
+                        <label><input type="radio" name="seans" checked> 13:30</label>
+                        <label><input type="radio" name="seans"> 16:00</label>
+                        <label><input type="radio" name="seans"> 19:00</label>
+                        <label><input type="radio" name="seans"> 21:30</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Bilet Bilgileri -->
+            <fieldset class="win-fieldset">
+                <legend class="win-legend">Bilet Bilgileri</legend>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div>
+                        <div class="form-row">
+                            <span class="label-text" style="width: 80px;">Bilet Türü</span>
+                            <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <label><input type="radio" name="tur" checked> Tam</label>
+                                <label><input type="radio" name="tur"> Öğrenci</label>
+                                <label><input type="radio" name="tur"> Çocuk</label>
+                            </div>
+                        </div>
+                        <div class="form-row" style="margin-top: 8px;">
+                            <span class="label-text" style="width: 80px;">Kişi Sayısı</span>
+                            <input type="number" class="win-input" value="2" style="max-width: 60px;">
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px; justify-content: center;">
+                        <label><input type="checkbox"> 3D Gözlük</label>
+                        <label><input type="checkbox"> Mısır + İçecek</label>
+                        <label><input type="checkbox"> VIP Koltuk</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Rezervasyon -->
+            <fieldset class="win-fieldset" style="margin-bottom: 5px;">
+                <legend class="win-legend">Rezervasyon</legend>
+                
+                <div class="form-row">
+                    <span class="label-text">Ad Soyad</span>
+                    <input type="text" class="win-input">
+                </div>
+                <div class="form-row">
+                    <span class="label-text">E-posta</span>
+                    <input type="text" class="win-input">
+                </div>
+                <div class="form-row" style="margin-bottom: 0;">
+                    <span class="label-text">Not</span>
+                    <textarea class="win-input"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Butonlar -->
+            <div class="action-buttons">
+                <button class="win-action-btn">REZERVASYON YAP</button>
+                <button class="win-action-btn">TEMİZLE</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
