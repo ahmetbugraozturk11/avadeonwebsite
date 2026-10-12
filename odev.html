@@ -126,6 +126,9 @@
             outline: none;
             flex: 1;
         }
+        .win-input.required {
+            border-left: 3px solid #d9534f;
+        }
         .radio-group, .checkbox-group {
             display: flex;
             gap: 15px;
@@ -173,7 +176,7 @@
         .progress-bar-fill {
             background-color: #0055ea;
             height: 100%;
-            width: 65%;
+            width: 35%;
             transition: width 0.3s ease;
         }
         .progress-text {
@@ -193,7 +196,6 @@
             gap: 4px 15px;
             font-size: 11px;
         }
-        /* Gizli gerçek date input */
         #realDateInput {
             position: absolute;
             opacity: 0;
@@ -264,11 +266,11 @@
                 </div>
                 <div class="form-row">
                     <span class="label-text">Film Süresi</span>
-                    <input type="text" class="win-input" id="txtSure" value="180 dakika" readonly style="background-color: #f4f4f4;">
+                    <input type="text" class="win-input" id="txtSure" value="177 dakika" readonly style="background-color: #f4f4f4;">
                 </div>
                 <div class="form-row" style="margin-bottom: 0;">
                     <span class="label-text">Yaş Sınırı</span>
-                    <input type="text" class="win-input" id="txtYas" value="13+" readonly style="background-color: #f4f4f4;">
+                    <input type="text" class="win-input" id="txtYas" value="Genel İzleyici" readonly style="background-color: #f4f4f4;">
                 </div>
             </fieldset>
 
@@ -311,21 +313,21 @@
                 </div>
             </fieldset>
 
-            <!-- Müşteri Bilgileri -->
+            <!-- Müşteri Bilgileri (Zorunlu Alanlar) -->
             <fieldset class="win-fieldset">
                 <legend class="win-legend">Müşteri Bilgileri</legend>
                 
                 <div class="form-row">
-                    <span class="label-text">Ad Soyad</span>
-                    <input type="text" class="win-input" id="txtAdSoyad">
+                    <span class="label-text">Ad Soyad *</span>
+                    <input type="text" class="win-input required" id="txtAdSoyad" placeholder="Zorunlu alan">
                 </div>
                 <div class="form-row">
-                    <span class="label-text">E-posta</span>
-                    <input type="text" class="win-input" id="txtEmail">
+                    <span class="label-text">E-posta *</span>
+                    <input type="email" class="win-input required" id="txtEmail" placeholder="Zorunlu alan">
                 </div>
                 <div class="form-row">
-                    <span class="label-text">Telefon</span>
-                    <input type="text" class="win-input" id="txtTelefon">
+                    <span class="label-text">Telefon *</span>
+                    <input type="text" class="win-input required" id="txtTelefon" placeholder="Zorunlu alan">
                 </div>
                 <div class="form-row" style="margin-bottom: 0;">
                     <span class="label-text">Not</span>
@@ -350,8 +352,8 @@
             <div style="margin-bottom: 12px;">
                 <div style="font-weight: 500; margin-bottom: 2px;" id="lblDoluluk">Salon Doluluk Oranı</div>
                 <div class="progress-container">
-                    <div class="progress-bar-fill" id="progressDoluluk" style="width: 45%;"></div>
-                    <div class="progress-text" id="progressText">45%</div>
+                    <div class="progress-bar-fill" id="progressDoluluk" style="width: 35%;"></div>
+                    <div class="progress-text" id="progressText">35%</div>
                 </div>
             </div>
 
@@ -365,7 +367,6 @@
     </div>
 
     <script>
-        // Film verileri (Film adına göre otomatik değişen süre, tür ve yaş sınırı)
         const filmData = {
             "Çağrı": { tur: "Tarih / Dram", sure: "177 dakika", yas: "Genel İzleyici" },
             "Diriliş": { tur: "Aksiyon / Tarih", sure: "145 dakika", yas: "13+" },
@@ -393,7 +394,7 @@
         cmbFilm.addEventListener('change', updateFilmDetails);
         updateFilmDetails();
 
-        // Takvim entegrasyonu (Emojiye tıklayınca açılır)
+        // Takvim entegrasyonu
         const calendarBtn = document.getElementById('calendarBtn');
         const realDateInput = document.getElementById('realDateInput');
         const dateTarih = document.getElementById('dateTarih');
@@ -409,14 +410,14 @@
 
         realDateInput.addEventListener('change', (e) => {
             if(e.target.value) {
-                const parts = e.target.value.split('-'); // YYYY-MM-DD
+                const parts = e.target.value.split('-');
                 const formatted = `${parts[2]}.${parts[1]}.${parts[0]}`;
                 dateTarih.value = formatted;
                 sumTarih.innerText = formatted;
             }
         });
 
-        // Gerçek Çalışan Doluluk Sayaçları ve Özet Güncelleyici
+        // Doluluk Oranı & Özet Güncelleyici
         const cmbSalon = document.getElementById('cmbSalon');
         const spnKisi = document.getElementById('spnKisi');
         const progressDoluluk = document.getElementById('progressDoluluk');
@@ -426,40 +427,41 @@
         const sumBilet = document.getElementById('sumBilet');
         const sumKisi = document.getElementById('sumKisi');
 
+        const txtAdSoyad = document.getElementById('txtAdSoyad');
+        const txtEmail = document.getElementById('txtEmail');
+        const txtTelefon = document.getElementById('txtTelefon');
+
         function updateSystem() {
-            // Özet alanları
             sumSalon.innerText = cmbSalon.value;
             sumKisi.innerText = spnKisi.value;
 
-            // Seans bulma
             const seansRadios = document.getElementsByName('seans');
             for(let r of seansRadios) {
-                if(r.checked) {
-                    sumSeans.innerText = r.parentElement.innerText.trim();
-                }
+                if(r.checked) sumSeans.innerText = r.parentElement.innerText.trim();
             }
 
-            // Bilet türü bulma
             const turRadios = document.getElementsByName('tur');
             for(let r of turRadios) {
-                if(r.checked) {
-                    sumBilet.innerText = r.parentElement.innerText.trim();
-                }
+                if(r.checked) sumBilet.innerText = r.parentElement.innerText.trim();
             }
 
-            // Gerçek Doluluk Oranı Hesaplama Mantığı
-            let baseOccupancy = 30; // Temel doluluk
-            if(cmbSalon.value === "VIP Salon") baseOccupancy = 50;
-            else if(cmbSalon.value === "Salon 2") baseOccupancy = 40;
+            // Temel Doluluk Hesabı
+            let baseOccupancy = 25;
+            if(cmbSalon.value === "VIP Salon") baseOccupancy = 45;
+            else if(cmbSalon.value === "Salon 2") baseOccupancy = 35;
 
             let personCount = parseInt(spnKisi.value) || 1;
             let total = baseOccupancy + (personCount * 5);
 
-            // Checkbox ek hizmetler doluluğu artırsın
             if(document.getElementById('chk3D').checked) total += 4;
             if(document.getElementById('chkMısır').checked) total += 6;
             if(document.getElementById('chkVIP').checked) total += 10;
             if(document.getElementById('chkMenu').checked) total += 5;
+
+            // Müşteri bilgisi girildikçe doluluk oranını artıran mantık
+            if(txtAdSoyad.value.trim().length > 2) total += 5;
+            if(txtEmail.value.trim().length > 5) total += 5;
+            if(txtTelefon.value.trim().length > 5) total += 5;
 
             if(total > 100) total = 100;
 
@@ -473,13 +475,18 @@
         document.querySelectorAll('input[name="tur"]').forEach(el => el.addEventListener('change', updateSystem));
         document.querySelectorAll('.calc-trigger').forEach(el => el.addEventListener('change', updateSystem));
 
+        // Müşteri bilgileri yazıldıkça sayacın güncellenmesi
+        txtAdSoyad.addEventListener('input', updateSystem);
+        txtEmail.addEventListener('input', updateSystem);
+        txtTelefon.addEventListener('input', updateSystem);
+
         updateSystem();
 
         // Temizle Butonu
         document.getElementById('btnTemizle').addEventListener('click', () => {
-            document.getElementById('txtAdSoyad').value = '';
-            document.getElementById('txtEmail').value = '';
-            document.getElementById('txtTelefon').value = '';
+            txtAdSoyad.value = '';
+            txtEmail.value = '';
+            txtTelefon.value = '';
             document.getElementById('txtNot').value = '';
             spnKisi.value = 2;
             document.getElementById('rdoTam').checked = true;
@@ -490,8 +497,17 @@
             updateSystem();
         });
 
+        // Rezervasyon Yap Butonu (Zorunlu Alan Kontrolü)
         document.getElementById('btnRezervasyon').addEventListener('click', () => {
+            if(!txtAdSoyad.value.trim() || !txtEmail.value.trim() || !txtTelefon.value.trim()) {
+                alert("Lütfen zorunlu alanları (Ad Soyad, E-posta, Telefon) doldurunuz!");
+                return;
+            }
             alert("Rezervasyon bilgileriniz başarıyla oluşturuldu!");
+        });
+
+        document.getElementById('btnIptalBtn').addEventListener('click', () => {
+            window.location.href = "index.html";
         });
     </script>
 </body>
