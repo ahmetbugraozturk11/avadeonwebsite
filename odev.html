@@ -176,7 +176,7 @@
         .progress-bar-fill {
             background-color: #0055ea;
             height: 100%;
-            width: 35%;
+            width: 0%;
             transition: width 0.3s ease;
         }
         .progress-text {
@@ -247,10 +247,10 @@
                 <div class="form-row">
                     <span class="label-text">Salon</span>
                     <select class="win-select" id="cmbSalon">
-                        <option>Salon 1</option>
-                        <option>Salon 2</option>
-                        <option>Salon 3</option>
-                        <option>VIP Salon</option>
+                        <option value="Salon 1">Salon 1</option>
+                        <option value="Salon 2">Salon 2</option>
+                        <option value="Salon 3">Salon 3</option>
+                        <option value="VIP Salon">VIP Salon</option>
                     </select>
                 </div>
                 <div class="form-row">
@@ -301,7 +301,7 @@
                         </div>
                         <div class="form-row" style="margin-top: 6px; margin-bottom: 0;">
                             <span class="label-text" style="width: 80px;">Kişi Sayısı</span>
-                            <input type="number" class="win-input" id="spnKisi" value="2" min="1" max="10" style="max-width: 60px;">
+                            <input type="number" class="win-input" id="spnKisi" value="1" min="1" max="10" style="max-width: 60px;">
                         </div>
                     </div>
                     <div class="checkbox-group" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px;">
@@ -313,7 +313,7 @@
                 </div>
             </fieldset>
 
-            <!-- Müşteri Bilgileri (Zorunlu Alanlar) -->
+            <!-- Müşteri Bilgileri -->
             <fieldset class="win-fieldset">
                 <legend class="win-legend">Müşteri Bilgileri</legend>
                 
@@ -344,16 +344,16 @@
                     <div><strong>Tarih :</strong> <span id="sumTarih">15.10.2026</span></div>
                     <div><strong>Seans :</strong> <span id="sumSeans">13:30</span></div>
                     <div><strong>Bilet :</strong> <span id="sumBilet">Tam</span></div>
-                    <div><strong>Kişi Sayısı:</strong> <span id="sumKisi">2</span></div>
+                    <div><strong>Kişi Sayısı:</strong> <span id="sumKisi">1</span></div>
                 </div>
             </fieldset>
 
-            <!-- Salon Doluluk Göstergesi -->
+            <!-- Doluluk Göstergesi -->
             <div style="margin-bottom: 12px;">
                 <div style="font-weight: 500; margin-bottom: 2px;" id="lblDoluluk">Salon Doluluk Oranı</div>
                 <div class="progress-container">
-                    <div class="progress-bar-fill" id="progressDoluluk" style="width: 35%;"></div>
-                    <div class="progress-text" id="progressText">35%</div>
+                    <div class="progress-bar-fill" id="progressDoluluk"></div>
+                    <div class="progress-text" id="progressText">0%</div>
                 </div>
             </div>
 
@@ -394,11 +394,13 @@
         cmbFilm.addEventListener('change', updateFilmDetails);
         updateFilmDetails();
 
-        // Takvim entegrasyonu
+        // Takvim
         const calendarBtn = document.getElementById('calendarBtn');
         const realDateInput = document.getElementById('realDateInput');
         const dateTarih = document.getElementById('dateTarih');
         const sumTarih = document.getElementById('sumTarih');
+
+        let isDateSelected = false;
 
         calendarBtn.addEventListener('click', () => {
             if (typeof realDateInput.showPicker === 'function') {
@@ -414,10 +416,12 @@
                 const formatted = `${parts[2]}.${parts[1]}.${parts[0]}`;
                 dateTarih.value = formatted;
                 sumTarih.innerText = formatted;
+                isDateSelected = true;
+                updateSystem();
             }
         });
 
-        // Doluluk Oranı & Özet Güncelleyici
+        // Dinamik Sayaç ve Tam %100 Hesaplama Mantığı
         const cmbSalon = document.getElementById('cmbSalon');
         const spnKisi = document.getElementById('spnKisi');
         const progressDoluluk = document.getElementById('progressDoluluk');
@@ -445,37 +449,47 @@
                 if(r.checked) sumBilet.innerText = r.parentElement.innerText.trim();
             }
 
-            // Temel Doluluk Hesabı
-            let baseOccupancy = 25;
-            if(cmbSalon.value === "VIP Salon") baseOccupancy = 45;
-            else if(cmbSalon.value === "Salon 2") baseOccupancy = 35;
+            let total = 0;
 
-            let personCount = parseInt(spnKisi.value) || 1;
-            let total = baseOccupancy + (personCount * 5);
+            // 1. Temel seçimler (Varsayılan olarak seçili gelenler): 35%
+            if(cmbFilm.value) total += 10;
+            if(cmbSalon.value) total += 10;
+            if(dateTarih.value) total += 10;
+            if(document.querySelector('input[name="seans"]:checked')) total += 5;
 
-            if(document.getElementById('chk3D').checked) total += 4;
-            if(document.getElementById('chkMısır').checked) total += 6;
-            if(document.getElementById('chkVIP').checked) total += 10;
-            if(document.getElementById('chkMenu').checked) total += 5;
+            // 2. Bilet Türü & Kişi Sayısı (1 bile olsa doğrudan eklenir): 15%
+            if(document.querySelector('input[name="tur"]:checked')) total += 5;
+            
+            let personCount = parseInt(spnKisi.value) || 0;
+            if(personCount >= 1) {
+                total += 10 + Math.min((personCount - 1) * 2, 8); // 1 kişide 10 puan, arttıkça ekstra puan
+            }
 
-            // Müşteri bilgisi girildikçe doluluk oranını artıran mantık
-            if(txtAdSoyad.value.trim().length > 2) total += 5;
-            if(txtEmail.value.trim().length > 5) total += 5;
-            if(txtTelefon.value.trim().length > 5) total += 5;
+            // 3. Ek Hizmetler (Tüm paketler seçilince tam puan): 10%
+            if(document.getElementById('chk3D').checked) total += 2.5;
+            if(document.getElementById('chkMısır').checked) total += 2.5;
+            if(document.getElementById('chkVIP').checked) total += 2.5;
+            if(document.getElementById('chkMenu').checked) total += 2.5;
 
-            if(total > 100) total = 100;
+            // 4. Müşteri Zorunlu Bilgileri (Her biri için puan): 40%
+            if(txtAdSoyad.value.trim().length >= 3) total += 15;
+            if(txtEmail.value.trim().length >= 5) total += 15;
+            if(txtTelefon.value.trim().length >= 5) total += 10;
 
-            progressDoluluk.style.width = total + '%';
-            progressText.innerText = total + '%';
+            // Toplamın 100'ü geçmemesini ve tam sayı görünmesini sağlama
+            let finalScore = Math.min(Math.round(total), 100);
+
+            progressDoluluk.style.width = finalScore + '%';
+            progressText.innerText = finalScore + '%';
         }
 
+        cmbFilm.addEventListener('change', updateSystem);
         cmbSalon.addEventListener('change', updateSystem);
         spnKisi.addEventListener('input', updateSystem);
         document.querySelectorAll('input[name="seans"]').forEach(el => el.addEventListener('change', updateSystem));
         document.querySelectorAll('input[name="tur"]').forEach(el => el.addEventListener('change', updateSystem));
         document.querySelectorAll('.calc-trigger').forEach(el => el.addEventListener('change', updateSystem));
 
-        // Müşteri bilgileri yazıldıkça sayacın güncellenmesi
         txtAdSoyad.addEventListener('input', updateSystem);
         txtEmail.addEventListener('input', updateSystem);
         txtTelefon.addEventListener('input', updateSystem);
@@ -488,7 +502,7 @@
             txtEmail.value = '';
             txtTelefon.value = '';
             document.getElementById('txtNot').value = '';
-            spnKisi.value = 2;
+            spnKisi.value = 1;
             document.getElementById('rdoTam').checked = true;
             document.getElementById('chk3D').checked = false;
             document.getElementById('chkMısır').checked = false;
@@ -497,7 +511,7 @@
             updateSystem();
         });
 
-        // Rezervasyon Yap Butonu (Zorunlu Alan Kontrolü)
+        // Rezervasyon Yap Butonu
         document.getElementById('btnRezervasyon').addEventListener('click', () => {
             if(!txtAdSoyad.value.trim() || !txtEmail.value.trim() || !txtTelefon.value.trim()) {
                 alert("Lütfen zorunlu alanları (Ad Soyad, E-posta, Telefon) doldurunuz!");
@@ -511,4 +525,4 @@
         });
     </script>
 </body>
-</html>
+</html>s
