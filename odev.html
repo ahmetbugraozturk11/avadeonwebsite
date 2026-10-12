@@ -18,13 +18,14 @@
             justify-content: center;
             min-height: 100vh;
             user-select: none;
+            padding: 20px 0;
         }
         .win-window {
             background-color: #ece9d8;
             border: 2px solid #0055ea;
             width: 100%;
-            max-width: 650px;
-            box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+            max-width: 700px;
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.3);
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
             overflow: hidden;
@@ -77,18 +78,28 @@
             padding: 15px;
             font-size: 12px;
             color: black;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .main-header {
+            text-align: center;
+            margin-bottom: 12px;
         }
         .main-title {
-            text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            color: #0b2545;
+        }
+        .main-subtitle {
+            font-size: 11px;
+            color: #444;
+            margin-top: 2px;
         }
         .win-fieldset {
             border: 1px solid #aca899;
-            padding: 12px;
-            margin-bottom: 12px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
             background: #ece9d8;
         }
         .win-legend {
@@ -100,10 +111,10 @@
         .form-row {
             display: flex;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 7px;
         }
         .form-row label, .form-row .label-text {
-            width: 90px;
+            width: 105px;
             font-weight: 500;
         }
         .win-input, .win-select {
@@ -119,24 +130,25 @@
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-wrap: wrap;
         }
         .radio-group label, .checkbox-group label {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             cursor: pointer;
             font-weight: normal;
         }
         .action-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
+            gap: 12px;
+            margin-top: 12px;
         }
         .win-action-btn {
             background-color: #ece9d8;
             border: 1px solid #7f9db9;
-            padding: 5px 25px;
+            padding: 5px 20px;
             font-size: 12px;
             font-weight: bold;
             cursor: pointer;
@@ -148,63 +160,130 @@
         }
         textarea.win-input {
             resize: none;
-            height: 50px;
+            height: 45px;
+        }
+        /* İlerleme Çubuğu (Progress Bar) */
+        .progress-container {
+            background: white;
+            border: 1px solid #7f9db9;
+            height: 18px;
+            position: relative;
+            width: 100%;
+            margin-top: 4px;
+        }
+        .progress-bar-fill {
+            background-color: #0055ea;
+            height: 100%;
+            width: 65%;
+        }
+        .progress-text {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            line-height: 18px;
+            color: #000;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 15px;
+            font-size: 11px;
         }
     </style>
 </head>
 <body>
 
     <div class="win-window">
-        <!-- Başlık Çubuğu -->
+        <!-- Pencere Başlık Çubuğu -->
         <div class="win-titlebar">
             <div class="win-title-left">
                 <div class="win-icon"></div>
-                <span>Sinema Bilet Sistemi</span>
+                <span id="lblBaslik">Sinema Bilet Sistemi</span>
             </div>
             <div class="win-controls">
                 <a href="#" class="win-btn-control">_</a>
                 <a href="#" class="win-btn-control">□</a>
-                <a href="index.html" class="win-btn-control">✕</a>
+                <a href="index.html" class="win-btn-control" id="btnIptal">✕</a>
             </div>
         </div>
 
-        <!-- İçerik -->
+        <!-- Ana Gövde -->
         <div class="win-body">
-            <div class="main-title">SİNEMA BİLET SİSTEMİ</div>
+            
+            <!-- 16. Bölüm: Üst Başlık ve Açıklama -->
+            <div class="main-header">
+                <div class="main-title">🎬 SİNEMA BİLETİ REZERVASYON SİSTEMİ</div>
+                <div class="main-subtitle">Film seçiminizi yaparak rezervasyon bilgilerinizi oluşturunuz.</div>
+            </div>
 
-            <!-- Film ve Seans -->
+            <!-- 5. Aşama: Film Bilgileri -->
             <fieldset class="win-fieldset">
-                <legend class="win-legend">Film ve Seans Bilgileri</legend>
+                <legend class="win-legend">Film Bilgileri</legend>
                 
                 <div class="form-row">
                     <span class="label-text">Film</span>
-                    <select class="win-select">
-                        <option>Avatar 3</option>
+                    <select class="win-select" id="cmbFilm">
+                        <option>Çağrı</option>
+                        <option>Diriliş</option>
+                        <option>Kuruluş</option>
+                        <option>Fetih 1453</option>
+                        <option>Alparslan</option>
+                        <option>Orhan</option>
                     </select>
                 </div>
                 <div class="form-row">
                     <span class="label-text">Salon</span>
-                    <select class="win-select">
+                    <select class="win-select" id="cmbSalon">
                         <option>Salon 1</option>
+                        <option>Salon 2</option>
+                        <option>Salon 3</option>
+                        <option>VIP Salon</option>
                     </select>
                 </div>
                 <div class="form-row">
                     <span class="label-text">Tarih</span>
-                    <input type="text" class="win-input" value="15.10.2026">
-                    <span class="win-action-btn" style="padding: 2px 8px; margin-left: 4px;">📅</span>
+                    <input type="text" class="win-input" id="dateTarih" value="15.10.2026">
+                    <span class="win-action-btn" style="padding: 2px 6px; margin-left: 4px;">📅</span>
+                </div>
+                <!-- 17. Aşama: Özgün Ek Özellikler (Film Türü, Süresi, Yaş Sınırı) -->
+                <div class="form-row">
+                    <span class="label-text">Film Türü</span>
+                    <select class="win-select">
+                        <option>Tarih / Dram</option>
+                        <option>Aksiyon</option>
+                        <option>Bilim Kurgu</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <span class="label-text">Film Süresi</span>
+                    <input type="text" class="win-input" value="148 dakika" readonly>
                 </div>
                 <div class="form-row" style="margin-bottom: 0;">
-                    <span class="label-text">Seans</span>
-                    <div class="radio-group">
-                        <label><input type="radio" name="seans" checked> 13:30</label>
-                        <label><input type="radio" name="seans"> 16:00</label>
-                        <label><input type="radio" name="seans"> 19:00</label>
-                        <label><input type="radio" name="seans"> 21:30</label>
-                    </div>
+                    <span class="label-text">Yaş Sınırı</span>
+                    <select class="win-select">
+                        <option>13+</option>
+                        <option>18+</option>
+                        <option>Genel İzleyici</option>
+                    </select>
                 </div>
             </fieldset>
 
-            <!-- Bilet Bilgileri -->
+            <!-- 6. Aşama: Seans Seçimi -->
+            <fieldset class="win-fieldset">
+                <legend class="win-legend">Seans Seçimi</legend>
+                <div class="radio-group">
+                    <label><input type="radio" name="seans" id="rdo1330" checked> 13:30</label>
+                    <label><input type="radio" name="seans" id="rdo1600"> 16:00</label>
+                    <label><input type="radio" name="seans" id="rdo1900"> 19:00</label>
+                    <label><input type="radio" name="seans" id="rdo2130"> 21:30</label>
+                </div>
+            </fieldset>
+
+            <!-- 7. Aşama: Bilet Bilgileri -->
             <fieldset class="win-fieldset">
                 <legend class="win-legend">Bilet Bilgileri</legend>
                 
@@ -212,47 +291,75 @@
                     <div>
                         <div class="form-row">
                             <span class="label-text" style="width: 80px;">Bilet Türü</span>
-                            <div style="display: flex; flex-direction: column; gap: 4px;">
-                                <label><input type="radio" name="tur" checked> Tam</label>
-                                <label><input type="radio" name="tur"> Öğrenci</label>
-                                <label><input type="radio" name="tur"> Çocuk</label>
+                            <div class="radio-group" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+                                <label><input type="radio" name="tur" id="rdoTam" checked> Tam</label>
+                                <label><input type="radio" name="tur" id="rdoOgrenci"> Öğrenci</label>
+                                <label><input type="radio" name="tur" id="rdoCocuk"> Çocuk</label>
                             </div>
                         </div>
-                        <div class="form-row" style="margin-top: 8px;">
+                        <div class="form-row" style="margin-top: 6px; margin-bottom: 0;">
                             <span class="label-text" style="width: 80px;">Kişi Sayısı</span>
-                            <input type="number" class="win-input" value="2" style="max-width: 60px;">
+                            <input type="number" class="win-input" id="spnKisi" value="2" min="1" max="10" style="max-width: 60px;">
                         </div>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 8px; justify-content: center;">
-                        <label><input type="checkbox"> 3D Gözlük</label>
-                        <label><input type="checkbox"> Mısır + İçecek</label>
-                        <label><input type="checkbox"> VIP Koltuk</label>
+                    <div class="checkbox-group" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px;">
+                        <label><input type="checkbox" id="chk3D"> 3D Gözlük</label>
+                        <label><input type="checkbox" id="chkMısır"> Mısır + İçecek</label>
+                        <label><input type="checkbox" id="chkVIP"> VIP Koltuk</label>
+                        <label><input type="checkbox" id="chkMenu"> Büyük Menü</label>
                     </div>
                 </div>
             </fieldset>
 
-            <!-- Rezervasyon -->
-            <fieldset class="win-fieldset" style="margin-bottom: 5px;">
-                <legend class="win-legend">Rezervasyon</legend>
+            <!-- 8. Aşama: Müşteri Bilgileri -->
+            <fieldset class="win-fieldset">
+                <legend class="win-legend">Müşteri Bilgileri</legend>
                 
                 <div class="form-row">
                     <span class="label-text">Ad Soyad</span>
-                    <input type="text" class="win-input">
+                    <input type="text" class="win-input" id="txtAdSoyad">
                 </div>
                 <div class="form-row">
                     <span class="label-text">E-posta</span>
-                    <input type="text" class="win-input">
+                    <input type="text" class="win-input" id="txtEmail">
+                </div>
+                <div class="form-row">
+                    <span class="label-text">Telefon</span>
+                    <input type="text" class="win-input" id="txtTelefon">
                 </div>
                 <div class="form-row" style="margin-bottom: 0;">
                     <span class="label-text">Not</span>
-                    <textarea class="win-input"></textarea>
+                    <textarea class="win-input" id="txtNot"></textarea>
                 </div>
             </fieldset>
 
-            <!-- Butonlar -->
+            <!-- 9. Aşama: Rezervasyon Özeti -->
+            <fieldset class="win-fieldset">
+                <legend class="win-legend">Rezervasyon Özeti</legend>
+                <div class="summary-grid">
+                    <div><strong>Film :</strong> Avatar 3</div>
+                    <div><strong>Salon :</strong> Salon 1</div>
+                    <div><strong>Tarih :</strong> 15.10.2026</div>
+                    <div><strong>Seans :</strong> 19:00</div>
+                    <div><strong>Bilet :</strong> Öğrenci</div>
+                    <div><strong>Kişi Sayısı:</strong> 2</div>
+                </div>
+            </fieldset>
+
+            <!-- 10. Aşama: Salon Doluluk Göstergesi -->
+            <div style="margin-bottom: 12px;">
+                <div style="font-weight: 500; margin-bottom: 2px;" id="lblDoluluk">Salon Doluluk Oranı</div>
+                <div class="progress-container">
+                    <div class="progress-bar-fill" id="progressDoluluk"></div>
+                    <div class="progress-text">65%</div>
+                </div>
+            </div>
+
+            <!-- 11. Aşama: İşlem Butonları -->
             <div class="action-buttons">
-                <button class="win-action-btn">REZERVASYON YAP</button>
-                <button class="win-action-btn">TEMİZLE</button>
+                <button class="win-action-btn" id="btnRezervasyon">REZERVASYON YAP</button>
+                <button class="win-action-btn" id="btnTemizle">TEMİZLE</button>
+                <button class="win-action-btn" id="btnIptalBtn">İPTAL</button>
             </div>
         </div>
     </div>
