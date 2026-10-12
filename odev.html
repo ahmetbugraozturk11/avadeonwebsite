@@ -21,11 +21,11 @@
             padding: 20px 0;
         }
         .win-window {
-            background-color: #ece9d8;
+            background-color: #ffffff; /* Tamamen Beyaz Yapıldı */
             border: 2px solid #0055ea;
             width: 100%;
             max-width: 700px;
-            box-shadow: 4px 4px 15px rgba(0,0,0,0.3);
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.15);
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
             overflow: hidden;
@@ -58,7 +58,7 @@
         .win-btn-control {
             width: 20px;
             height: 20px;
-            background-color: #ece9d8;
+            background-color: #ffffff;
             color: black;
             border: 1px solid #7f9db9;
             font-size: 11px;
@@ -97,10 +97,10 @@
             margin-top: 2px;
         }
         .win-fieldset {
-            border: 1px solid #aca899;
+            border: 1px solid #d0d0d0;
             padding: 10px 12px;
             margin-bottom: 10px;
-            background: #ece9d8;
+            background: #ffffff; /* Grup İçleri de Beyaz */
         }
         .win-legend {
             font-size: 12px;
@@ -149,7 +149,7 @@
             margin-top: 12px;
         }
         .win-action-btn {
-            background-color: #ece9d8;
+            background-color: #f5f5f5;
             border: 1px solid #7f9db9;
             padding: 5px 20px;
             font-size: 12px;
@@ -158,7 +158,7 @@
             box-shadow: inset 1px 1px 0px white, inset -1px -1px 0px #dfdfdf;
         }
         .win-action-btn:active {
-            background-color: #d4d0c8;
+            background-color: #e0e0e0;
             box-shadow: inset 1px 1px 0px #dfdfdf, inset -1px -1px 0px white;
         }
         textarea.win-input {
@@ -262,15 +262,15 @@
                 
                 <div class="form-row">
                     <span class="label-text">Film Türü</span>
-                    <input type="text" class="win-input" id="txtTur" value="Tarih / Dram" readonly style="background-color: #f4f4f4;">
+                    <input type="text" class="win-input" id="txtTur" value="Tarih / Dram" readonly style="background-color: #f9f9f9;">
                 </div>
                 <div class="form-row">
                     <span class="label-text">Film Süresi</span>
-                    <input type="text" class="win-input" id="txtSure" value="177 dakika" readonly style="background-color: #f4f4f4;">
+                    <input type="text" class="win-input" id="txtSure" value="177 dakika" readonly style="background-color: #f9f9f9;">
                 </div>
                 <div class="form-row" style="margin-bottom: 0;">
                     <span class="label-text">Yaş Sınırı</span>
-                    <input type="text" class="win-input" id="txtYas" value="Genel İzleyici" readonly style="background-color: #f4f4f4;">
+                    <input type="text" class="win-input" id="txtYas" value="Genel İzleyici" readonly style="background-color: #f9f9f9;">
                 </div>
             </fieldset>
 
@@ -304,11 +304,12 @@
                             <input type="number" class="win-input" id="spnKisi" value="1" min="1" max="10" style="max-width: 60px;">
                         </div>
                     </div>
+                    <!-- Opsiyonel Ek Hizmetler (Sayaçtan çıkarıldı) -->
                     <div class="checkbox-group" style="flex-direction: column; align-items: flex-start; justify-content: center; gap: 6px;">
-                        <label><input type="checkbox" id="chk3D" class="calc-trigger"> 3D Gözlük</label>
-                        <label><input type="checkbox" id="chkMısır" class="calc-trigger"> Mısır + İçecek</label>
-                        <label><input type="checkbox" id="chkVIP" class="calc-trigger"> VIP Koltuk</label>
-                        <label><input type="checkbox" id="chkMenu" class="calc-trigger"> Büyük Menü</label>
+                        <label><input type="checkbox" id="chk3D"> 3D Gözlük</label>
+                        <label><input type="checkbox" id="chkMısır"> Mısır + İçecek</label>
+                        <label><input type="checkbox" id="chkVIP"> VIP Koltuk</label>
+                        <label><input type="checkbox" id="chkMenu"> Büyük Menü</label>
                     </div>
                 </div>
             </fieldset>
@@ -400,8 +401,6 @@
         const dateTarih = document.getElementById('dateTarih');
         const sumTarih = document.getElementById('sumTarih');
 
-        let isDateSelected = false;
-
         calendarBtn.addEventListener('click', () => {
             if (typeof realDateInput.showPicker === 'function') {
                 realDateInput.showPicker();
@@ -416,12 +415,11 @@
                 const formatted = `${parts[2]}.${parts[1]}.${parts[0]}`;
                 dateTarih.value = formatted;
                 sumTarih.innerText = formatted;
-                isDateSelected = true;
                 updateSystem();
             }
         });
 
-        // Dinamik Sayaç ve Tam %100 Hesaplama Mantığı
+        // Güncel Sadece Zorunlu Seçimlere Göre Çalışan Sayaç
         const cmbSalon = document.getElementById('cmbSalon');
         const spnKisi = document.getElementById('spnKisi');
         const progressDoluluk = document.getElementById('progressDoluluk');
@@ -451,32 +449,26 @@
 
             let total = 0;
 
-            // 1. Temel seçimler (Varsayılan olarak seçili gelenler): 35%
+            // 1. Temel seçimler (Film, Salon, Tarih, Seans): 40%
             if(cmbFilm.value) total += 10;
             if(cmbSalon.value) total += 10;
             if(dateTarih.value) total += 10;
-            if(document.querySelector('input[name="seans"]:checked')) total += 5;
+            if(document.querySelector('input[name="seans"]:checked')) total += 10;
 
-            // 2. Bilet Türü & Kişi Sayısı (1 bile olsa doğrudan eklenir): 15%
+            // 2. Bilet Türü & Kişi Sayısı: 15%
             if(document.querySelector('input[name="tur"]:checked')) total += 5;
             
             let personCount = parseInt(spnKisi.value) || 0;
             if(personCount >= 1) {
-                total += 10 + Math.min((personCount - 1) * 2, 8); // 1 kişide 10 puan, arttıkça ekstra puan
+                total += 10; // Kişi sayısı en az 1 olduğunda puan eklenir
             }
 
-            // 3. Ek Hizmetler (Tüm paketler seçilince tam puan): 10%
-            if(document.getElementById('chk3D').checked) total += 2.5;
-            if(document.getElementById('chkMısır').checked) total += 2.5;
-            if(document.getElementById('chkVIP').checked) total += 2.5;
-            if(document.getElementById('chkMenu').checked) total += 2.5;
-
-            // 4. Müşteri Zorunlu Bilgileri (Her biri için puan): 40%
+            // 3. Zorunlu Müşteri Bilgileri: 45% (Her biri 15%)
             if(txtAdSoyad.value.trim().length >= 3) total += 15;
             if(txtEmail.value.trim().length >= 5) total += 15;
-            if(txtTelefon.value.trim().length >= 5) total += 10;
+            if(txtTelefon.value.trim().length >= 5) total += 15;
 
-            // Toplamın 100'ü geçmemesini ve tam sayı görünmesini sağlama
+            // Ek hizmetler opsiyonel olduğu için sayaca etki etmez. Zorunlu alanlar bitince tam %100 olur.
             let finalScore = Math.min(Math.round(total), 100);
 
             progressDoluluk.style.width = finalScore + '%';
@@ -488,7 +480,6 @@
         spnKisi.addEventListener('input', updateSystem);
         document.querySelectorAll('input[name="seans"]').forEach(el => el.addEventListener('change', updateSystem));
         document.querySelectorAll('input[name="tur"]').forEach(el => el.addEventListener('change', updateSystem));
-        document.querySelectorAll('.calc-trigger').forEach(el => el.addEventListener('change', updateSystem));
 
         txtAdSoyad.addEventListener('input', updateSystem);
         txtEmail.addEventListener('input', updateSystem);
@@ -525,4 +516,4 @@
         });
     </script>
 </body>
-</html>s
+</html>
