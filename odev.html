@@ -1,0 +1,20 @@
+<script>
+    // Klavyeden sırasıyla "ö", "d", "e", "v" harflerine basıldığını takip eder
+    let typedBuffer = "";
+    const targetWord = "ödev";
+
+    window.addEventListener("keydown", (e) => {
+        typedBuffer += e.key.toLowerCase();
+        
+        // Eğer yanlış harfe basılırsa tamponu temizle veya son kelimeye odaklan
+        if (!targetWord.startsWith(typedBuffer)) {
+            typedBuffer = e.key.toLowerCase() === 'ö' ? 'ö' : '';
+        }
+
+        // "ödev" kelimesi tamamlandığında odev.html sayfasına yönlendirir
+        if (typedBuffer === targetWord) {
+            window.location.href = "odev.html";
+            typedBuffer = "";
+        }
+    });
+</script>
