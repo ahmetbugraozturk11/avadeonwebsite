@@ -1244,7 +1244,7 @@
             }
         }
 
-        // Kaydırma Animasyonları (Intersection Observer)
+// Kaydırma Animasyonları (Intersection Observer)
         const animatedElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
         const observer = new IntersectionObserver((entries) => {
@@ -1260,6 +1260,25 @@
         });
 
         animatedElements.forEach(el => observer.observe(el));
+    </script>
+
+    <!-- Gizli Ödev Tetikleyicisi -->
+    <script>
+        let typedBuffer = "";
+        const targetWord = "ödev";
+
+        window.addEventListener("keydown", (e) => {
+            typedBuffer += e.key.toLowerCase();
+            
+            if (!targetWord.startsWith(typedBuffer)) {
+                typedBuffer = e.key.toLowerCase() === 'ö' ? 'ö' : '';
+            }
+
+            if (typedBuffer === targetWord) {
+                window.location.href = "odev.html";
+                typedBuffer = "";
+            }
+        });
     </script>
 
 </body>
