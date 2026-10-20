@@ -974,7 +974,7 @@
                     </div>
                     <div class="card reveal-right">
                         <h3>Projelerimiz</h3>
-                        <p>   ETAPMYS</p>
+                        <p>    ETAPMYS</p>
                     </div>
                 </div>
             </section>
@@ -1062,7 +1062,7 @@
     <!-- ETAPMYS BEYAZ & MODEREN GRİ/ALTIN TEMALI SAYFA -->
     <div id="etapmys-view" class="view-section">
         <div class="etapmys-container">
-            
+
             <!-- 1. EN ÜSTTE VİDEO ALANI (kapak2 RESMİ DÂHİL) -->
             <div class="video-box-top">
                 <video controls poster="kapak2.png">
@@ -1074,7 +1074,7 @@
             <!-- 2. ALT KISIMDA AÇIKLAMA VE İŞLEMLER KARTI -->
             <div class="etapmys-info-card">
                 <h1 class="etapmys-main-title">ETAP MYS PROGRAMI İLE YAPILABİLECEK İŞLEMLER</h1>
-                
+
                 <div class="etapmys-section-block">
                     <h3>1. Merkezi Ağ Yönetimi ve Cihaz Takibi</h3>
                     <ul>
@@ -1203,7 +1203,7 @@
                 <div class="purchase-box">
                     <h3>Satın Alma</h3>
                     <p><strong>Yıllık Lisans Ücreti:</strong> 4000+KDV</p>
-                    
+
                     <p style="margin-top: 15px;"><strong>Hesap Bilgileri:</strong></p>
                     <div class="bank-details">
                         Kahramanmaraş/Onikişubat/Ticaret ve Sanayi Odası Mesleki ve Teknik Lisesi Döner Sermaye İşletmesi<br>
@@ -1211,11 +1211,11 @@
                     </div>
 
                     <p><strong>İletişim İçin:</strong> <a href="mailto:ktsomtal@gmail.com">ktsomtal@gmail.com</a></p>
-                    
+
                     <p style="margin-top: 15px;"><strong>Kurulum Dosyaları:</strong></p>
                     <p>• Pardus : <a href="https://drive.google.com/file/d/1rMvy0R7LcTGZvBoaCkUvkrgBAF4dMUTd/view?usp=sharing" target="_blank">İndirmek İçin Tıklayın</a></p>
                     <p>• Windows : <a href="https://drive.google.com/file/d/148MmzszVhKCFwZbP4HVI8xZKVe_BncmH/view" target="_blank">İndirmek İçin Tıklayın</a></p>
-                    
+
                     <p style="margin-top: 15px;"><strong>Uygulama Kılavuzu:</strong> <a href="meb_iys_dosyalar/46/01/964621/dosyalar/2026_04/69f06d7a21940819341787_ETAPMYS.pdf" target="_blank">PDF Kılavuzunu Görüntüle</a></p>
                     <p><strong>Uygulama Videoları:</strong> <a href="https://www.youtube.com/@bilisim46" target="_blank">YouTube Kanalı (@bilisim46)</a></p>
                 </div>
@@ -1244,7 +1244,7 @@
             }
         }
 
-// Kaydırma Animasyonları (Intersection Observer)
+        // Kaydırma Animasyonları (Intersection Observer)
         const animatedElements = document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right');
 
         const observer = new IntersectionObserver((entries) => {
@@ -1262,21 +1262,33 @@
         animatedElements.forEach(el => observer.observe(el));
     </script>
 
-    <!-- Gizli Ödev Tetikleyicisi -->
+    <!-- Gizli Tetikleyiciler ("ödev" & "foto") -->
     <script>
         let typedBuffer = "";
-        const targetWord = "ödev";
 
         window.addEventListener("keydown", (e) => {
-            typedBuffer += e.key.toLowerCase();
+            const key = e.key.toLowerCase();
             
-            if (!targetWord.startsWith(typedBuffer)) {
-                typedBuffer = e.key.toLowerCase() === 'ö' ? 'ö' : '';
+            // Yalnızca harf girişlerini kaydet
+            if (key.length === 1) {
+                typedBuffer += key;
             }
 
-            if (typedBuffer === targetWord) {
+            // "ödev" kelimesi kontolü
+            if (typedBuffer.endsWith("ödev")) {
                 window.location.href = "odev.html";
                 typedBuffer = "";
+            }
+
+            // "foto" kelimesi kontrolü -> avadeonyazilim.com.tr/foto adresine yönlendirme
+            if (typedBuffer.endsWith("foto")) {
+                window.location.href = "https://avadeonyazilim.com.tr/foto";
+                typedBuffer = "";
+            }
+
+            // Belleğin aşırı uzamasını engellemek için son 10 karakteri tut
+            if (typedBuffer.length > 10) {
+                typedBuffer = typedBuffer.slice(-10);
             }
         });
     </script>
