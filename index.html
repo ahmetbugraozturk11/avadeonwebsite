@@ -1142,7 +1142,7 @@
                         <li>Tüm kullanıcı hesapları merkezi olarak oluşturulabilir ve yönetilebilir.</li>
                         <li>Şifre değiştirme işlemleri toplu şekilde gerçekleştirilebilir.</li>
                         <li>Yeni kullanıcılar tüm cihazlara eş zamanlı olarak eklenebilir.</li>
-                        <li>Kullanıcı silme ve veri temizleme işlemleri merkezi olarak uygulanabilir.</li>
+                        <li>Kullanıcı silsilme ve veri temizleme işlemleri merkezi olarak uygulanabilir.</li>
                         <li>Kullanıcı profilleri diğer cihazlara kopyalanarak standart yapı oluşturulabilir.</li>
                         <li>Sistem temizleme işlemleri ile cihaz performansı artırılabilir.</li>
                     </ul>
@@ -1262,33 +1262,21 @@
         animatedElements.forEach(el => observer.observe(el));
     </script>
 
-    <!-- Gizli Tetikleyiciler ("ödev" & "foto") -->
+    <!-- Gizli Ödev Tetikleyicisi -->
     <script>
         let typedBuffer = "";
+        const targetWord = "ödev";
 
         window.addEventListener("keydown", (e) => {
-            const key = e.key.toLowerCase();
-            
-            // Yalnızca harf girişlerini kaydet
-            if (key.length === 1) {
-                typedBuffer += key;
+            typedBuffer += e.key.toLowerCase();
+
+            if (!targetWord.startsWith(typedBuffer)) {
+                typedBuffer = e.key.toLowerCase() === 'ö' ? 'ö' : '';
             }
 
-            // "ödev" kelimesi kontolü
-            if (typedBuffer.endsWith("ödev")) {
+            if (typedBuffer === targetWord) {
                 window.location.href = "odev.html";
                 typedBuffer = "";
-            }
-
-            // "foto" kelimesi kontrolü -> avadeonyazilim.com.tr/foto adresine yönlendirme
-            if (typedBuffer.endsWith("foto")) {
-                window.location.href = "https://avadeonyazilim.com.tr/foto";
-                typedBuffer = "";
-            }
-
-            // Belleğin aşırı uzamasını engellemek için son 10 karakteri tut
-            if (typedBuffer.length > 10) {
-                typedBuffer = typedBuffer.slice(-10);
             }
         });
     </script>
